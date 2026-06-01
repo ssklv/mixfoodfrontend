@@ -1,0 +1,130 @@
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  padding: 20px 80px 20px 40px; 
+  
+  /* 1. ДЕЛАЕМ ФОН ПРОЗРАЧНЫМ */
+  background-color: transparent; 
+  
+  /* 2. ПОДНИМАЕМ ШАПКУ НАД ФОНОМ */
+  position: relative;
+  z-index: 10; 
+  
+  width: 100%;
+  gap: 80px; 
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  /* gap убран, так как здесь остался только логотип */
+  min-width: 220px; 
+}
+
+/* Класс .address-picker полностью удален */
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-family: 'Pacifico', cursive !important;
+  font-size: 42px;
+  color: #8D5C5A;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+.logo-subtitle {
+  font-size: 14px;
+  color: #8D5C5A;
+  margin-left: 10px;
+  
+  /* 👇 ИСПРАВЛЕНО: Отодвинули подзаголовок чуть ниже от "МиксФуд" */
+  margin-top: 6px; 
+}
+
+/* ПОИСК (Сделали длиннее) */
+.header-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 540px; /* Увеличили длину поиска для большего простора */
+}
+
+.header-search input {
+  width: 100%;
+  
+  /* ИСПРАВЛЕНО: Одинаковые отступы сверху и снизу (16px), чтобы текст стоял ровно */
+  padding: 16px 45px 16px 40px; 
+  
+  border: none;
+  border-radius: 8px;
+  background-color: #E5D0C0; 
+  font-size: 16px;
+  color: rgba(54, 43, 43, 0.5);
+  outline: none;
+  font-family: 'IBM Plex Mono', monospace;
+  
+  /* ИСПРАВЛЕНО: Добавили box-sizing, чтобы padding не ломал общую ширину */
+  box-sizing: border-box;
+}
+
+.header-search input::placeholder {
+  color: rgba(54, 43, 43, 0.5);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: rgba(54, 43, 43, 0.5);
+  
+  /* ИСПРАВЛЕНО: Жестко центрируем иконку лупы по вертикали */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Квадратная уменьшенная кнопка закрытия */
+.clear-search {
+  position: absolute;
+  right: 14px;
+  background: transparent;
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(54, 43, 43, 0.5); 
+  border-radius: 6px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  color: rgba(54, 43, 43, 0.5);
+  transition: all 0.2s ease;
+  
+  /* ИСПРАВЛЕНО: Жестко центрируем кнопку крестика по вертикали */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.clear-search svg {
+  width: 10px;
+  height: 10px;
+  stroke: currentColor;
+  stroke-width: 2.5px;
+}
+
+.clear-search:hover {
+  background-color: rgba(54, 43, 43, 0.1);
+  border-color: rgba(54, 43, 43, 0.8);
+  color: rgba(54, 43, 43, 0.8);
+}
+
+/* БЛОК КНОПОК (Сделали расстояние больше) */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* Заметно увеличили расстояние между кнопками регистрации, входа и корзины */
+  margin-left: auto; 
+}

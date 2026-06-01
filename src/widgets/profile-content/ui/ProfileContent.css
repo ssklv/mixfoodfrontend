@@ -1,0 +1,153 @@
+.profile-content {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.tab-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 36px;
+  font-weight: 500;
+  color: #362B2B;
+  margin: 0 0 30px 0;
+}
+
+/* ЗАКАЗЫ */
+.order-card {
+  background-color: #E5D0C0;
+  border-radius: 15px;
+  padding: 25px 30px;
+  margin-bottom: 25px;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.order-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-id {
+  font-family: 'IBM Plex Mono', monospace;
+  color: rgba(54, 43, 43, 0.5);
+  font-size: 16px;
+}
+
+.order-date, .order-status {
+  font-family: 'IBM Plex Mono', monospace;
+  color: #362B2B;
+  font-size: 20px;
+}
+
+.order-divider {
+  height: 1px;
+  background-color: #362B2B;
+  opacity: 0.3;
+  margin: 15px 0;
+}
+
+.order-items-preview {
+  display: flex;
+  gap: 15px;
+}
+
+.food-mock {
+  font-size: 40px;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #362B2B;
+  font-size: 18px;
+}
+
+/* ДАННЫЕ */
+.data-card {
+  background-color: #E5D0C0;
+  border-radius: 15px;
+  padding: 40px;
+  max-width: 600px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  border: 1px solid rgba(54, 43, 43, 0.5);
+  border-radius: 12px;
+  padding: 8px 15px;
+}
+
+.input-group label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: rgba(54, 43, 43, 0.6);
+}
+
+.input-group input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 18px;
+  color: #362B2B;
+  margin-top: 5px;
+}
+
+.save-btn {
+  margin-top: 10px;
+}
+
+/* АДРЕСА */
+.address-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.address-card, .add-address-card {
+  background-color: #E5D0C0;
+  border-radius: 15px;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.address-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 20px;
+  color: #362B2B;
+}
+
+.dots-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.add-address-card {
+  justify-content: flex-start;
+  gap: 15px;
+  background-color: transparent;
+  border: 2px dashed #CC9D9D;
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 20px;
+  color: #362B2B;
+}
+
+.plus-icon {
+  font-size: 28px;
+  font-weight: 300;
+}

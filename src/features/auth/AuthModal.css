@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500&display=swap');
+
+/* Затемнение фона */
+.auth-overlay {
+  position: fixed !important;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(60, 60, 60, 0.85); /* Чуть темнее для контраста */
+  display: flex !important;
+  align-items: center; justify-content: center;
+  z-index: 9999;
+}
+
+/* Окно стало шире и выше */
+.auth-modal {
+  background-color: #F8EDDF !important;
+  width: 700px !important; /* Увеличили ширину */
+  min-height: 720px !important; /* Даем больше пространства по вертикали */
+  border-radius: 40px !important; /* Более скругленные углы для мягкого вида */
+  padding: 80px 70px !important; /* Увеличили внутренние отступы */
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  position: relative !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.auth-logo-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 72px; /* Чуть крупнее */
+  color: #7B5251;
+  margin-bottom: 50px !important;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 60px !important;
+  font-family: 'Roboto', sans-serif;
+  font-size: 32px;
+  color: #A9A9A9;
+  cursor: pointer;
+}
+
+.auth-tabs .active { 
+  color: #362B2B; 
+  border-bottom: 3px solid #362B2B; 
+  padding-bottom: 5px;
+}
+
+.auth-form { 
+  width: 100% !important; 
+  max-width: 500px !important; /* Форма стала шире */
+  display: flex !important; 
+  flex-direction: column; 
+  gap: 25px !important;
+}
+
+.auth-input {
+  width: 100% !important;
+  padding: 20px 25px !important;
+  background-color: #E8DACB;
+  border: none;
+  border-radius: 18px;
+  font-size: 20px;
+  color: #362B2B;
+}
+
+/* Скрытие без изменения высоты */
+.auth-input.hidden { 
+  visibility: hidden;
+  height: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+.auth-btn {
+  width: 340px !important; 
+  margin: 30px auto 30px auto !important; 
+  padding: 20px;
+  background-color: #CC9D9D;
+  border-radius: 18px;
+  font-size: 22px;
+  cursor: pointer;
+  border: none;
+  color: #362B2B;
+  font-weight: 500;
+}
+
+.auth-footer-wrapper {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.auth-divider {
+  width: 360px !important; 
+  height: 1px;
+  background-color: #362B2B;
+  margin-bottom: 25px !important;
+}
+
+.auth-footer {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: #8C847E;
+}

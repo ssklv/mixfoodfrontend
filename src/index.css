@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Pacifico&display=swap');
+
+/* Глобальный сброс */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text: #362B2B; /* Обновили под твою палитру */
+  --text-h: #362B2B;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'IBM Plex Mono', monospace;
+  background-color: #FFF0D0; /* Глобальный цвет сайта */
+  color: var(--text);
+  overflow-x: hidden; /* Скрывает то, что вылезает за экран */
+}
+
+/* Ключевой блок для прижатия футера */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Обертка для контента - заставляет футер падать вниз */
+.content-wrapper {
+  flex: 1; 
+  position: relative;
+  z-index: 1;
+}
+
+/* Наш фоновый круг */
+.ellipse {
+  position: absolute;
+  top: -100px;
+  right: -50px; 
+  z-index: 0; 
+  width: 600px;
+  height: auto;
+  pointer-events: none; 
+  object-fit: contain;
+}
+
+/* Настройка заголовков */
+h1, h2 {
+  font-weight: 500;
+  color: var(--text-h);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Стили для кода */
+code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 15px;
+  padding: 4px 8px;
+  background: #f4f3ec;
+  border-radius: 4px;
+}

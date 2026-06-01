@@ -1,0 +1,174 @@
+/* Подключение необходимых шрифтов из Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Pacifico&family=Playpen+Sans:wght@400&display=swap');
+
+.main-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 80px;
+  background-color: #DBC8B8; 
+  color: #362B2B;
+  width: 100%;
+  margin-top: auto; 
+}
+
+/* --- Стили для Логотипа --- */
+
+/* ИСПРАВЛЕНО: Сделали минус больше (-28px), чтобы поднять весь блок еще выше */
+.logo-column {
+  margin-top: -28px; 
+}
+
+.logo-title {
+  font-family: 'Pacifico', cursive;
+  font-size: 54px; 
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.logo-pink { color: #D88B8E; } 
+.logo-brown { color: #694C4E; } 
+
+.logo-subtitle {
+  font-family: 'Playpen Sans', sans-serif;
+  font-weight: 400; 
+  font-size: 22px; 
+  color: #A65659; 
+  margin-left: -12px;  
+  margin-top:-2px; 
+}
+
+/* --- Структура колонок --- */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+/* Названия столбцов */
+.footer-heading {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600; 
+  font-size: 22px; 
+  color: #362B2B;
+  opacity: 1; 
+  margin-bottom: 4px;
+}
+
+/* Ссылки/кнопки под названиями */
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 17px; 
+}
+
+.footer-links li {
+  color: #362B2B;
+  opacity: 0.8; 
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.footer-links li:hover {
+  opacity: 0.5; 
+}
+
+/* Текст подсказки */
+.footer-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 17px; 
+  color: #362B2B;
+  opacity: 0.8; 
+  max-width: 280px; 
+  line-height: 1.5;    
+  margin-bottom: 12px; 
+}
+
+/* --- Соцсети --- */
+.footer-socials {
+  display: flex;
+  gap: 24px; /* Твоё расстояние между иконками */
+  margin-top: 16px;
+  margin-left: -10px;
+}
+
+.social-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px; 
+  border: none;
+  background-color: #E6D8CA; 
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+}
+
+/* Твои настройки размеров и прозрачности иконок */
+.social-btn img {
+  width: 24px;         
+  height: 24px;    
+  filter: opacity(0.8);    
+  object-fit: contain; 
+  display: block;
+}
+
+/* --- Поле ввода E-mail --- */
+.email-input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #C6A6A5; 
+  padding: 6px 16px;   
+  border-radius: 8px;  
+  width: 290px;        
+  position: relative;  
+}
+
+.email-input-wrapper input {
+  background: transparent;
+  border: none;
+  padding: 6px 24px 6px 0; 
+  width: 100%;
+  outline: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;     
+  text-align: center;  
+  color: #362B2B;
+}
+
+.email-input-wrapper input::placeholder {
+  text-align: center;  
+  color: #362B2B;
+  opacity: 0.6;
+}
+
+.email-submit {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;   
+  right: 16px;         
+  top: 0;
+  height: 100%;        
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #362B2B;
+  transition: opacity 0.2s ease;
+}
+
+.email-submit:hover {
+  opacity: 0.7;
+}
+
+.email-submit svg {
+  display: block;      
+}

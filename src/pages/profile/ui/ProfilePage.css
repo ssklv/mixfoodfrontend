@@ -1,0 +1,12 @@
+.profile-page-wrapper {
+  padding: 40px 80px; /* Отступы как в шапке */
+  box-sizing: border-box;
+  min-height: calc(100vh - 120px); /* Минус высота шапки */
+}
+
+.profile-container {
+  max-width: 1200px;
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}

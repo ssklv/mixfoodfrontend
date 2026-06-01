@@ -1,0 +1,47 @@
+.shared-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Чуть увеличили расстояние между иконкой и текстом под новый шрифт */
+  padding: 16px 32px;
+  border: none;
+  border-radius: 15px; 
+  
+  /* Шрифты */
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  
+  /* 👇 ИСПРАВЛЕНО: Увеличили размер шрифта до 18px (было 16px) */
+  font-size: 18px; 
+  
+  /* 👇 ИСПРАВЛЕНО: Задали общий цвет текста для всех кнопок */
+  color: #362B2B; 
+  
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.shared-btn:hover {
+  opacity: 0.8;
+}
+
+/* Фон для Входа и Регистрации */
+.variant-default {
+  background-color: #E5D0C0;
+}
+
+/* Фон для Корзины */
+.variant-primary {
+  background-color: #CC9D9D;
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  color: #362B2B; 
+}
+
+.btn-icon svg {
+  /* 👇 ИСПРАВЛЕНО: Жестко красим контур иконок в нужный цвет */
+  stroke: #362B2B !important; 
+}

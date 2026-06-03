@@ -1,0 +1,33 @@
+.menu-page-wrapper {
+  padding: 40px 60px; /* Увеличили боковой отступ до 60px, чтобы сдвинуть от левого края */
+  max-width: 1440px; /* Расширили контейнер, чтобы 4 карточки точно влезли в ряд */
+  margin: 0 auto;
+}
+
+.menu-category-section {
+  margin-bottom: 80px;
+  scroll-margin-top: 100px; /* Чтобы навигационный бар не перекрывал заголовок при скролле */
+}
+
+.category-title {
+  font-family: 'IBM Plex Mono', monospace; /* Тот самый шрифт */
+  font-size: 40px; /* Размер как на макете */
+  font-weight: 400; /* Regular вес шрифта */
+  margin-bottom: 40px;
+  color: #333333;
+  text-align: left;
+}
+
+.dishes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px; /* Чуть увеличенное расстояние между карточками */
+  justify-content: flex-start; /* Карточки выстраиваются ровно слева направо */
+}
+
+.menu-loading {
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 24px;
+  padding: 100px;
+}

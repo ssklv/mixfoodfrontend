@@ -1,112 +1,123 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500&display=swap');
-
-/* Затемнение фона */
 .auth-overlay {
-  position: fixed !important;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background-color: rgba(60, 60, 60, 0.85); /* Чуть темнее для контраста */
-  display: flex !important;
-  align-items: center; justify-content: center;
-  z-index: 9999;
+  position: fixed;
+  inset: 0;
+  background: #3c3c40e6; /* Темный фон как на скрине */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-/* Окно стало шире и выше */
 .auth-modal {
-  background-color: #F8EDDF !important;
-  width: 700px !important; /* Увеличили ширину */
-  min-height: 720px !important; /* Даем больше пространства по вертикали */
-  border-radius: 40px !important; /* Более скругленные углы для мягкого вида */
-  padding: 80px 70px !important; /* Увеличили внутренние отступы */
-  display: flex !important;
+  background: #F8EFE4; /* Светло-бежевый фон модалки */
+  padding: 50px 40px;
+  border-radius: 24px;
+  
+  /* ИСПРАВЛЕНО: Сделали само окно шире слева и справа */
+  width: 640px; 
+  
+  box-sizing: border-box;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative !important;
-  box-sizing: border-box !important;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
 
-.auth-logo-text {
-  font-family: 'Pacifico', cursive;
-  font-size: 72px; /* Чуть крупнее */
-  color: #7B5251;
-  margin-bottom: 50px !important;
+.auth-logo {
+  font-size: 64px;
+  color: #8C5C59;
+  font-family: 'Pacifico', cursive; /* Замени на свой шрифт логотипа, если нужно */
+  margin-bottom: 30px;
 }
 
 .auth-tabs {
   display: flex;
-  gap: 60px;
-  margin-bottom: 60px !important;
-  font-family: 'Roboto', sans-serif;
-  font-size: 32px;
-  color: #A9A9A9;
-  cursor: pointer;
+  gap: 20px;
+  margin-bottom: 40px;
+  font-size: 36px;
+  color: #9E9E9E; /* Серый цвет неактивного таба */
 }
 
-.auth-tabs .active { 
-  color: #362B2B; 
-  border-bottom: 3px solid #362B2B; 
+.auth-tabs span {
+  cursor: pointer;
   padding-bottom: 5px;
 }
 
-.auth-form { 
-  width: 100% !important; 
-  max-width: 500px !important; /* Форма стала шире */
-  display: flex !important; 
-  flex-direction: column; 
-  gap: 25px !important;
+.auth-tabs span.active {
+  color: #4A4A4A;
+  border-bottom: 2px solid #222; /* Черное подчеркивание активного таба */
 }
 
-.auth-input {
-  width: 100% !important;
-  padding: 20px 25px !important;
-  background-color: #E8DACB;
-  border: none;
-  border-radius: 18px;
-  font-size: 20px;
-  color: #362B2B;
-}
-
-/* Скрытие без изменения высоты */
-.auth-input.hidden { 
-  visibility: hidden;
-  height: 0;
-  padding: 0 !important;
-  margin: 0 !important;
-  border: none !important;
-}
-
-.auth-btn {
-  width: 340px !important; 
-  margin: 30px auto 30px auto !important; 
-  padding: 20px;
-  background-color: #CC9D9D;
-  border-radius: 18px;
-  font-size: 22px;
-  cursor: pointer;
-  border: none;
-  color: #362B2B;
-  font-weight: 500;
-}
-
-.auth-footer-wrapper {
-  width: 100% !important;
-  display: flex !important;
+.auth-form {
+  /* ИСПРАВЛЕНО: Зафиксировали ширину формы, чтобы инпуты и кнопки не растягивались вместе с окном */
+  width: 470px;
+  display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 20px;
+}
+
+/* Контейнер инпута для имитации плейсхолдера сверху */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  background: #EBE1D5; /* Темно-бежевый фон полей */
+  border-radius: 12px;
+}
+
+.placeholder-text {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 12px;
+  color: #7A7A7A;
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 100%;
+  padding: 28px 15px 10px 15px; /* Отступ сверху, чтобы текст не налезал на плейсхолдер */
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  font-size: 16px;
+  color: #333;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.auth-submit {
+  width: 100%;
+  height: 60px;
+  background: #C09999; /* Розовато-коричневая кнопка */
+  color: #333;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
-  margin-top: auto;
+  margin-top: 10px;
 }
 
 .auth-divider {
-  width: 360px !important; 
-  height: 1px;
-  background-color: #362B2B;
-  margin-bottom: 25px !important;
+  /* ИСПРАВЛЕНО: Сделали разделитель ровно в ширину инпутов */
+  width: 470px;
+  border: none;
+  border-top: 1px solid #222;
+  margin: 30px 0;
 }
 
 .auth-footer {
-  font-family: 'Roboto', sans-serif;
   font-size: 20px;
-  color: #8C847E;
+  color: #8C8C8C;
+  cursor: pointer;
+}
+
+.underline-text {
+  text-decoration: underline;
+}
+
+.auth-error {
+  color: #D9534F;
+  font-size: 14px;
+  text-align: center;
 }

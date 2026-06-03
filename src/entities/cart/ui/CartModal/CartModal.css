@@ -1,0 +1,283 @@
+.cart-overlay {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background: rgba(88, 75, 72, 0.6);
+  z-index: 9999 !important; 
+  display: flex; 
+  justify-content: flex-end;
+}
+
+.cart-container {
+  width: 440px; 
+  height: 100%; 
+  background: #FCF3DE;
+  padding: 40px 30px; 
+  display: flex; 
+  flex-direction: column;
+  font-family: 'IBM Plex Mono', monospace;
+  box-sizing: border-box;
+}
+
+/* Шапка корзины */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #362B2B;
+}
+
+.cart-header h2 {
+  color: #362B2B;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.clear-all-btn {
+  background: none;
+  border: none;
+  color: rgba(54, 43, 43, 0.63);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Список добавленных блюд */
+.cart-items-list {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 20px;
+  padding-right: 5px;
+}
+
+.cart-product-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.product-round-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.product-middle-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-title {
+  color: #362B2B;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Округлая плашка управления количеством: + 1 - */
+.product-quantity-pill {
+  display: inline-flex;
+  align-items: center;
+  background-color: #CC9D9D;
+  border-radius: 15px; /* Скругление 15px */
+  padding: 4px 12px;
+  width: max-content;
+  gap: 10px;
+}
+
+.product-quantity-pill button {
+  background: none;
+  border: none;
+  color: #362B2B;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: opacity 0.15s ease;
+}
+
+/* Эффект наведения на кнопочки + и - внутри плашки */
+.product-quantity-pill button:hover {
+  opacity: 0.5;
+}
+
+.product-quantity-pill span {
+  color: #362B2B;
+  font-size: 15px;
+  font-weight: 600;
+  min-width: 12px;
+  text-align: center;
+}
+
+/* Правая колонка с ценой и крестиком удаления */
+.product-right-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 65px;
+}
+
+.delete-cross-btn {
+  background: #362B2B;
+  color: #FCF3DE;
+  border: none;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.product-price {
+  color: #362B2B;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Нижний блок подвала корзины */
+.cart-footer {
+  border-top: 2px solid #362B2B;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-total-block {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.total-label {
+  color: rgba(54, 43, 43, 0.63);
+  font-size: 14px;
+}
+
+.total-sum {
+  color: #362B2B;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Капсульная кнопка оформления заказа */
+.capsule-checkout-btn {
+  background-color: #CC9D9D;
+  color: #362B2B;
+  border: none;
+  border-radius: 15px; /* Скругление 15px по Фигме */
+  padding: 12px 28px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  /* Растягивание текста на кнопке */
+  letter-spacing: 5px;       
+  text-indent: 5px;          
+  text-align: center;
+}
+
+.capsule-checkout-btn:hover {
+  background-color: #BC8D8D; /* Плавное потемнение при наведении */
+}
+
+.capsule-checkout-btn:active {
+  transform: scale(0.97); /* Эффект продавливания при нажатии */
+}
+
+/* Стили для БЛОКИРОВАННОЙ кнопки оформления заказа */
+.capsule-checkout-btn.btn-disabled {
+  background-color: #CBB5AC !important; /* Блеклый цвет */
+  color: rgba(54, 43, 43, 0.4) !important;
+  cursor: pointer; /* Оставляем обычный курсор, чтобы клик регистрировался кодом для анимации тоста */
+}
+
+.capsule-checkout-btn.btn-disabled:hover {
+  background-color: #CBB5AC !important; /* Выключаем hover эффекты */
+  transform: none !important;
+}
+
+/* Стили для пустого состояния */
+.empty-cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.empty-cart-container h3 {
+  color: #362B2B;
+  font-size: 24px;
+  margin: 0 0 8px 0;
+}
+
+.empty-cart-container p {
+  color: rgba(54, 43, 43, 0.63);
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   ВСПЛЫВАЮЩЕЕ УВЕДОМЛЕНИЕ (TOAST) НАД КОРЗИНОЙ
+   ========================================================================== */
+.cart-auth-toast {
+  position: fixed;
+  top: -120px; /* Изначально спрятан выше экрана */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #CC9D9D; /* Фирменный темный контрастный цвет */
+  color: #362B2B;            /* Светлый кремовый текст */
+  padding: 16px 24px;
+  border-radius: 15px;       /* Скругление 15px */
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+  z-index: 100000 !important; /* Выше подложки оверлея */
+  width: max-content;
+  max-width: 420px;
+  font-family: 'IBM Plex Mono', monospace;
+  transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Пружинный выезд */
+}
+
+/* Класс активации всплывающего уведомления */
+.cart-auth-toast.show {
+  top: 30px; /* Плавный выезд на 30px сверху */
+}
+
+.toast-icon {
+  font-size: 24px;
+}
+
+.toast-text strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.toast-text p {
+  margin: 0;
+  font-size: 13px;
+  color: 362B2B(252, 243, 222, 0.8);
+  line-height: 1.4;
+}

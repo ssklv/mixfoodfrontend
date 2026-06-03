@@ -1,4 +1,4 @@
-/* Базовый сброс */
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 .app-container {
@@ -8,25 +8,23 @@
   position: relative;
 }
 
-/* Эллипс теперь не мешает кликам */
 .ellipse {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 0;
-  pointer-events: none; /* ВАЖНО: клики проходят сквозь него */
+  pointer-events: none;
 }
 
-/* Контейнер хедера и контента */
 .content-wrapper {
   position: relative;
-  z-index: 10; /* Хедер и контент поверх всего */
+  z-index: 10; 
   flex: 1;
 }
 
 .main-header {
   position: relative;
-  z-index: 1000; /* Самый высокий приоритет для кнопок */
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;

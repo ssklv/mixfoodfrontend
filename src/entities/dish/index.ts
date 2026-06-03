@@ -1,0 +1,1 @@
+export { DishCard } from './ui/DishCard/DishCard';

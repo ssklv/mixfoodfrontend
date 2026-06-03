@@ -128,3 +128,113 @@
   gap: 40px; /* Заметно увеличили расстояние между кнопками регистрации, входа и корзины */
   margin-left: auto; 
 }
+
+.logo-link {
+  text-decoration: none; /* Убираем подчеркивание */
+  color: inherit;       /* Наследуем цвет текста от родителя */
+  cursor: pointer;
+}
+
+.logo-link:hover {
+  opacity: 0.8;         /* Легкий эффект при наведении */
+  transition: 0.2s;
+}
+
+.search-results-dropdown {
+  position: absolute;
+  top: calc(100% + 10px); /* Отступ от инпута вниз */
+  left: 0;
+  width: 100%;
+  background-color: #E5D0C0; /* Цвет фона как в макете */
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #362B2B;
+  font-size: 15px;
+}
+
+.search-result-item:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.search-result-item img {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 15px;
+  background-color: #d1bba9;
+}
+
+.no-results {
+  padding: 20px;
+  text-align: center;
+  color: #8D5C5A;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 15px;
+}
+
+/* ==========================================================================
+   ИЗМЕНЕННЫЕ СТИЛИ ДЛЯ КНОПКИ КОРЗИНЫ ПО МАКЕТУ (КАПСУЛА)
+   ========================================================================== */
+.header-cart-capsule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background-color: #CC9D9D; /* Розовато-бежевый оттенок из макета */
+  border: none;
+  border-radius: 15px; /* Скругленная форма капсулы */
+  padding: 0 28px;
+  height: 52px; /* Фиксированная высота для идеального выравнивания */
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #362B2B; /* Темный цвет текста */
+  font-size: 20px; /* Крупный размер шрифта из макета */
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-sizing: border-box;
+}
+
+.header-cart-capsule:hover {
+  background-color: #BAA399;
+}
+
+.header-cart-capsule:active {
+  transform: scale(0.98);
+}
+
+.cart-capsule-price {
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+.cart-capsule-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #362B2B;
+}
+
+.cart-capsule-count {
+  font-weight: 500;
+}
+
+.cart-capsule-text {
+  font-weight: 500;
+}

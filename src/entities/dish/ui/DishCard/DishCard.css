@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+.dish-showcase-card {
+  width: 100%;
+  max-width: 321px;
+  min-height: 349px;
+  background-color: #F3D8BD;
+  border-radius: 24px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  /* Убрали cursor: pointer, если карточка не должна кликаться целиком */
+  font-family: 'IBM Plex Mono', monospace;
+  /* Анимация удалена */
+  transition: none; 
+}
+
+/* Убрали .dish-showcase-card:hover полностью */
+
+.dish-showcase-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dish-showcase-image-wrapper img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.dish-showcase-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.dish-showcase-title {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #2c2c2c;
+  line-height: 1.2;
+}
+
+.dish-showcase-meta {
+  font-size: 16px;
+  color: #767676;
+  font-weight: 400;
+  margin-bottom: auto;
+}
+
+.dish-showcase-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Центрирует кнопку и цену по вертикали */
+  margin-top: 16px;
+}
+
+.dish-showcase-price {
+  font-size: 28px;
+  font-weight: 500;
+  color: #2c2c2c;
+}
+
+.dish-showcase-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: #CC9D9D;
+  color: #2c2c2c;
+  border: none;
+  
+  border-radius: 12px;
+  padding: 12px 20px; /* Увеличили внутренние отступы кнопки */
+  font-size: 18px;    /* Шрифт кнопки стал больше */
+  font-weight: 500;
+  font-family: 'IBM Plex Mono', monospace;
+  cursor: pointer;
+  /* Убрали transition: background-color, если кнопка должна быть статичной */
+}

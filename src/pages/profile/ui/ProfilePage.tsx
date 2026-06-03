@@ -1,124 +1,243 @@
-import React, { useState, useEffect } from 'react';
-import { api } from '@/shared/api/api';
-import { useUserStore } from '@/entities/user/model/userSlice';
-import './AuthModal.css';
+import React, { useEffect, useState } from 'react';
+import { useUserStore } from '../../../entities/user/model/userStore';
+import { useDishStore, type Dish } from '../../../entities/dish/model/dishStore'; // Импорт стора и типа Dish
+import { AddAddressModal } from '../../../features/address/ui/AddAddressModal/AddAddressModal';
+import { DishForm } from '../../../entities/dish/ui/DishForm/DishForm';
+import { AddressCard } from '../../../features/address/ui/AddressCard/AddressCard';
+import { AdminDishCard } from '../../../entities/dish/ui/AdminDishCard/AdminDishCard'; 
+import './ProfilePage.css';
+import { type Address } from '../../../entities/user/model/userStore';
+export type ProfileTab = 'orders' | 'history' | 'data' | 'addresses' | 'admin_menu';
 
-interface AuthModalProps {
-  initialMode: 'login' | 'register';
-  onClose: () => void;
-}
+export const ProfilePage: React.FC = () => {
+  const { 
+    userName, userPhone, userEmail, role, logout, fetchProfile, 
+    updateProfile, isLoading, addresses, fetchAddresses, deleteAddress 
+  } = useUserStore();
 
-export const AuthModal: React.FC<AuthModalProps> = ({ initialMode, onClose }) => {
-  const [mode, setMode] = useState<'login' | 'register'>(initialMode);
+  // Подключаем стор для блюд
+  const { dishes, fetchDishes, deleteDish } = useDishStore();
+
+  const [activeTab, setActiveTab] = useState<'orders' | 'history' | 'data' | 'addresses' | 'admin_menu'>('orders');
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+  const [isDishModalOpen, setIsDishModalOpen] = useState(false); // Состояние для модалки блюда
+  const [editingAddress, setEditingAddress] = useState<Address | null>(null);
+  const [editingDish, setEditingDish] = useState<Dish | null>(null); // Состояние для редактируемого блюда
   
-  // Состояния формы
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [activeMenuId, setActiveMenuId] = useState<number | null>(null);
 
-  // Подключаем метод из глобального стора
-  const setAuth = useUserStore((state) => state.setAuth);
+  const [name, setName] = useState(userName);
+  const [phone, setPhone] = useState(userPhone);
+  const [email, setEmail] = useState(userEmail);
+
+  const [nameError, setNameError] = useState<string | null>(null);
+  const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const [globalError, setGlobalError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<boolean>(false);
 
   useEffect(() => {
-    setMode(initialMode);
-    setError(''); // Сбрасываем ошибку при смене режима
-  }, [initialMode]);
+    fetchProfile();
+  }, [fetchProfile]);
 
-  const toggleMode = () => {
-    setMode((prev) => (prev === 'login' ? 'register' : 'login'));
-    setError('');
-  };
+  useEffect(() => {
+    if (activeTab === 'addresses') {
+      fetchAddresses();
+    }
+    if (activeTab === 'admin_menu') {
+      fetchDishes();
+    }
+  }, [activeTab, fetchAddresses, fetchDishes]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  useEffect(() => {
+    setName(userName);
+    setPhone(userPhone);
+    setEmail(userEmail);
+  }, [userName, userPhone, userEmail]);
+
+  const handleSaveProfile = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-    
-    // Примитивная валидация (как просили в задании)
-    if (!phone || !password) {
-      setError('Заполните обязательные поля');
-      return;
-    }
-    if (mode === 'register' && !name) {
-      setError('Введите имя');
-      return;
-    }
+    setNameError(null); setPhoneError(null); setEmailError(null); setGlobalError(null); setSuccessMessage(false);
 
-    setIsLoading(true);
+    const result = await updateProfile({ name, phone, email });
 
-    try {
-      if (mode === 'login') {
-        const res = await api.post('/auth/login', { phone, password });
-        // Успех: сохраняем токен
-        setAuth(true, res.data.accessToken, 'Пользователь'); // Имя потом можно вытянуть с бэка
-        onClose();
-      } else {
-        const res = await api.post('/auth/register', { phone, password, name });
-        // Успех: сохраняем токен и имя
-        setAuth(true, res.data.accessToken, name);
-        onClose();
-      }
-    } catch (err: any) {
-      // Обработка ошибок с бэкенда (твои ErrorResponse из Go)
-      if (err.response?.data?.error) {
-        setError(err.response.data.error);
-      } else {
-        setError('Что-то пошло не так. Проверьте соединение.');
-      }
-    } finally {
-      setIsLoading(false);
+    if (result.success) {
+      setSuccessMessage(true);
+      setTimeout(() => setSuccessMessage(false), 3000);
+    } else {
+      const serverError = result.error || '';
+      if (serverError.includes('name')) setNameError('Имя не должно быть пустым или длиннее 30 символов');
+      else if (serverError.includes('phone')) setPhoneError('Неверный формат телефона (требуется 10 цифр)');
+      else if (serverError.includes('email')) setEmailError('Некорректный email или этот адрес уже занят');
+      else setGlobalError(serverError || 'Произошла непредвиденная ошибка при сохранении');
     }
   };
 
   return (
-    <div className="auth-overlay" onClick={onClose}>
-      <div className="auth-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="auth-logo-text">МиксФуд</div>
-
-        <div className="auth-tabs">
-          <span className={mode === 'login' ? 'active' : ''} onClick={() => setMode('login')}>Вход</span>
-          <span className={mode === 'register' ? 'active' : ''} onClick={() => setMode('register')}>Регистрация</span>
-        </div>
-
-        <form className="auth-form" onSubmit={handleSubmit}>
-          {/* Отображение ошибки */}
-          {error && <div style={{ color: '#D9534F', fontSize: '16px', textAlign: 'center' }}>{error}</div>}
-
-          <input 
-            type="text" 
-            placeholder="Имя" 
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className={`auth-input ${mode === 'login' ? 'hidden' : ''}`} 
-          />
-          <input 
-            type="text" 
-            placeholder="Телефон (например, 79991234567)" 
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="auth-input" 
-          />
-          <input 
-            type="password" 
-            placeholder="Пароль" 
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="auth-input" 
-          />
-
-          <button type="submit" className="auth-btn" disabled={isLoading}>
-            {isLoading ? 'Загрузка...' : (mode === 'login' ? 'Войти' : 'Зарегистрироваться')}
-          </button>
-        </form>
-
-        <div className="auth-footer-wrapper" onClick={toggleMode}>
-          <div className="auth-divider"></div>
-          <div className="auth-footer">
-            {mode === 'login' ? 'Создать аккаунт' : 'Есть аккаунт? Войти'}
+    <div className="profile-page-body">
+      <aside className="profile-sidebar">
+        <div className="user-info-card">
+          <div className="avatar-circle">{userName ? userName.charAt(0).toUpperCase() : 'И'}</div>
+          <div className="user-meta">
+            <span className="user-name">{userName || 'Илья'}</span>
+            <span className="user-phone">{userPhone || '+71234567890'}</span>
           </div>
         </div>
-      </div>
+        
+        <hr className="sidebar-divider" />
+
+        <nav className="sidebar-menu">
+          <button className={`menu-item ${activeTab === 'orders' ? 'active' : ''}`} onClick={() => setActiveTab('orders')}>Заказы</button>
+          <button className={`menu-item ${activeTab === 'history' ? 'active' : ''}`} onClick={() => setActiveTab('history')}>История чеков</button>
+          
+          {role === 'admin' ? (
+             <button className={`menu-item ${activeTab === 'admin_menu' ? 'active' : ''}`} onClick={() => setActiveTab('admin_menu')}>Управление меню</button>
+          ) : (
+            <>
+              <button className={`menu-item ${activeTab === 'data' ? 'active' : ''}`} onClick={() => setActiveTab('data')}>Данные</button>
+              <button className={`menu-item ${activeTab === 'addresses' ? 'active' : ''}`} onClick={() => setActiveTab('addresses')}>Адреса</button>
+            </>
+          )}
+        </nav>
+
+        <hr className="sidebar-divider" />
+        <button className="logout-btn" onClick={logout}>
+          <span className="logout-icon">➔</span> Выйти
+        </button>
+      </aside>
+
+      <main className="profile-content-area">
+        {activeTab === 'data' && (
+          <div className="data-form-card">
+            <h2>Личные данные</h2>
+            <form className="profile-form" onSubmit={handleSaveProfile}>
+              <div className={`profile-input-wrapper ${nameError ? 'input-has-error' : ''}`}>
+                <label>Имя</label>
+                <input type="text" value={name || ''} onChange={(e) => setName(e.target.value)} disabled={isLoading} />
+                {nameError && <span className="field-error-text">{nameError}</span>}
+              </div>
+              <div className={`profile-input-wrapper ${phoneError ? 'input-has-error' : ''}`}>
+                <label>Телефон</label>
+                <input type="text" value={phone || ''} onChange={(e) => setPhone(e.target.value)} disabled={isLoading} />
+                {phoneError && <span className="field-error-text">{phoneError}</span>}
+              </div>
+              <div className={`profile-input-wrapper ${emailError ? 'input-has-error' : ''}`}>
+                <label>Эл. почта</label>
+                <input type="email" value={email || ''} onChange={(e) => setEmail(e.target.value)} disabled={isLoading} />
+                {emailError && <span className="field-error-text">{emailError}</span>}
+              </div>
+              {globalError && <div className="profile-error-message">⚠️ {globalError}</div>}
+              {successMessage && <div className="profile-success-message">✓ Данные успешно сохранены</div>}
+              <button type="submit" className="save-profile-btn" disabled={isLoading}>{isLoading ? 'Сохранение...' : 'Сохранить'}</button>
+            </form>
+          </div>
+        )}
+
+        {activeTab === 'orders' && <div className="tab-content-card"><h2>Активные заказы</h2><p style={{ color: '#7A7A7A' }}>Нет active-ных заказов</p></div>}
+        {activeTab === 'history' && <div className="tab-content-card"><h2>История заказов</h2><p style={{ color: '#7A7A7A' }}>История пуста</p></div>}
+
+        {activeTab === 'admin_menu' && (
+          <div className="tab-content-card">
+            <h2>Управление меню</h2>
+            <div className="admin-dishes-list">
+              {dishes.map((dish) => (
+                <AdminDishCard 
+                  key={dish.id} 
+                  dish={dish}
+                  isOpen={activeMenuId === dish.id}
+                  onToggleMenu={() => setActiveMenuId(activeMenuId === dish.id ? null : dish.id)}
+                  onEdit={() => {
+                    setEditingDish(dish);
+                    setIsDishModalOpen(true);
+                    setActiveMenuId(null);
+                  }}
+                  onDelete={() => {
+                    if (window.confirm(`Удалить блюдо "${dish.name}"?`)) {
+                      deleteDish(dish.id);
+                      setActiveMenuId(null);
+                    }
+                  }}
+                />
+              ))}
+              <button className="add-address-btn" onClick={() => {
+                setEditingDish(null);
+                setIsDishModalOpen(true);
+              }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 5V19M5 12H19" stroke="#333333" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Добавить новое блюдо
+              </button>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'addresses' && (
+          <div className="tab-content-card">
+            <h2>Мои адреса</h2>
+            <div className="addresses-list">
+              {addresses.length > 0 ? (
+                addresses.map((addr) => (
+                  <AddressCard 
+                    key={addr.id} 
+                    address={addr}
+                    isOpen={activeMenuId === addr.id}
+                    onToggleMenu={() => setActiveMenuId(activeMenuId === addr.id ? null : addr.id)}
+                    onEdit={() => {
+                      setEditingAddress(addr);
+                      setIsAddressModalOpen(true);
+                      setActiveMenuId(null);
+                    }}
+                    onDelete={() => {
+                      deleteAddress(addr.id);
+                      setActiveMenuId(null);
+                    }}
+                  />
+                ))
+              ) : (
+                <p style={{ color: '#7A7A7A' }}>Адреса не добавлены</p>
+              )}
+              
+              <button className="add-address-btn" onClick={() => {
+                setEditingAddress(null);
+                setIsAddressModalOpen(true);
+              }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 5V19M5 12H19" stroke="#333333" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Добавить новый адрес
+              </button>
+            </div>
+          </div>
+        )}
+      </main>
+
+      {isAddressModalOpen && (
+        <AddAddressModal 
+          onClose={() => {
+            setIsAddressModalOpen(false);
+            setEditingAddress(null);
+          }} 
+          addressToEdit={editingAddress} 
+        />
+      )}
+
+      {isDishModalOpen && (
+        <div className="modal-overlay" onClick={() => {
+          setIsDishModalOpen(false);
+          setEditingDish(null);
+        }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ background: 'transparent', padding: 0, border: 'none', width: 'auto' }}>
+            <DishForm 
+              dishToEdit={editingDish}
+              onClose={() => {
+                setIsDishModalOpen(false);
+                setEditingDish(null);
+              }} 
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

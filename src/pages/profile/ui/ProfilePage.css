@@ -1,12 +1,259 @@
-.profile-page-wrapper {
-  padding: 40px 80px; /* Отступы как в шапке */
-  box-sizing: border-box;
-  min-height: calc(100vh - 120px); /* Минус высота шапки */
+body.profile-page-mode,
+body.profile-page-mode #root,
+body.profile-page-mode .app,
+body.profile-page-mode .app-container,
+body.profile-page-mode .main-layout,
+body.profile-page-mode main {
+  background-color: #D7C5B1 !important; 
+  background-image: none !important;  
 }
 
-.profile-container {
-  max-width: 1200px;
+body.profile-page-mode .circle,
+body.profile-page-mode .bg-circle,
+body.profile-page-mode .blur-circle,
+body.profile-page-mode .background-blob,
+body.profile-page-mode [class*="circle"], 
+body.profile-page-mode [class*="blob"] {
+  display: none !important;
+}
+
+
+.profile-page-body {
   display: flex;
-  align-items: flex-start;
+  padding: 40px;
   gap: 40px;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  align-items: flex-start;
+  background-color: #D7C5B1;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Левое боковое меню */
+.profile-sidebar {
+  width: 300px;
+  background: #E5D0C0;
+  border-radius: 24px;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.user-info-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 0 10px;
+}
+
+.avatar-circle {
+  width: 50px;
+  height: 50px;
+  background: #C09999;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #362B2B;
+  font-weight: bold;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.user-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 22px;
+  color: #333;
+  font-weight: bold;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.user-phone {
+  font-size: 14px;
+  color: #7A7A7A;
+  margin-top: 4px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.sidebar-divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #333;
+  margin: 25px 0;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-item {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 14px 20px;
+  font-size: 24px;
+  color: #4A4A4A;
+  cursor: pointer;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.menu-item.active {
+  background: #C09999;
+  color: #333;
+}
+
+.logout-btn {
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: 10px 20px;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Правая контентная область */
+.profile-content-area {
+  flex: 1;
+}
+
+.profile-content-area h2 {
+  font-size: 36px;
+  color: #222;
+  margin: 0 0 25px 0;
+  font-weight: normal;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.data-form-card, .tab-content-card {
+  background: #E5D0C0;
+  border-radius: 24px;
+  padding: 40px;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border-radius: 16px;
+  padding: 10px 20px;
+  border: 1px solid #7A7A7A;
+  transition: border-color 0.2s ease;
+}
+
+.profile-input-wrapper label {
+  font-size: 12px;
+  color: #7A7A7A;
+  margin-bottom: 4px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.profile-input-wrapper input {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #333;
+  outline: none;
+  padding: 2px 0;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.save-profile-btn {
+  width: 180px;
+  height: 54px;
+  background: #C09999;
+  border: none;
+  border-radius: 16px;
+  font-size: 22px;
+  color: #333;
+  cursor: pointer;
+  margin-top: 15px;
+  font-family: 'IBM Plex Mono', monospace;
+  transition: opacity 0.2s ease;
+}
+
+/* Внедрение стилей валидации для интеграции с бэкендом Go */
+.profile-input-wrapper.input-has-error {
+  border-color: #D9534F !important; /* Красный цвет рамки при ошибке */
+}
+
+.field-error-text {
+  font-size: 12px;
+  color: #D9534F;
+  margin-top: 4px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.profile-error-message {
+  color: #D9534F;
+  font-size: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  margin-top: 5px;
+}
+
+.profile-success-message {
+  color: #2F9E44; /* Приятный зелёный цвет успеха */
+  font-size: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  margin-top: 5px;
+}
+
+.save-profile-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.addresses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Стилизация кнопки добавления адреса, чтобы она совпадала с карточками */
+.add-address-btn {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%; /* Занимает всю ширину списка */
+  padding: 24px 30px;
+  background: #EAE0D5; 
+  border: none; 
+  border-radius: 12px; 
+  color: #333;
+  font-size: 20px;
+  line-height: 24px; /* Должна быть такой же, как в карточке */
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  transition: background 0.2s ease;
+  box-sizing: border-box; /* Убирает лишние невидимые пиксели браузера */
+}
+
+.add-address-btn:hover {
+  background: #DFD3C5;
 }

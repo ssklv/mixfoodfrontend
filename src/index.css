@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Pacifico&display=swap');
 
-/* Глобальный сброс */
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +7,7 @@
 }
 
 :root {
-  --text: #362B2B; /* Обновили под твою палитру */
+  --text: #362B2B; 
   --text-h: #362B2B;
   
   font-synthesis: none;
@@ -23,12 +22,11 @@ body {
   width: 100%;
   min-height: 100vh;
   font-family: 'IBM Plex Mono', monospace;
-  background-color: #FFF0D0; /* Глобальный цвет сайта */
+  background-color: #FFF0D0; 
   color: var(--text);
-  overflow-x: hidden; /* Скрывает то, что вылезает за экран */
+  overflow-x: hidden; 
 }
 
-/* Ключевой блок для прижатия футера */
 #root {
   width: 100%;
   min-height: 100vh;
@@ -36,14 +34,12 @@ body {
   flex-direction: column;
 }
 
-/* Обертка для контента - заставляет футер падать вниз */
 .content-wrapper {
   flex: 1; 
   position: relative;
   z-index: 1;
 }
 
-/* Наш фоновый круг */
 .ellipse {
   position: absolute;
   top: -100px;
@@ -55,18 +51,33 @@ body {
   object-fit: contain;
 }
 
-/* Настройка заголовков */
 h1, h2 {
   font-weight: 500;
   color: var(--text-h);
   font-family: 'IBM Plex Mono', monospace;
 }
 
-/* Стили для кода */
 code {
   font-family: ui-monospace, Consolas, monospace;
   font-size: 15px;
   padding: 4px 8px;
   background: #f4f3ec;
   border-radius: 4px;
+}
+
+
+.app-container.profile-mode {
+  background-color: #D7C5B1 !important;
+}
+
+body:has(.profile-mode) {
+  background-color: #D7C5B1 !important;
+}
+
+.app-container.profile-mode header,
+.app-container.profile-mode footer,
+.app-container.profile-mode .main-header,
+.app-container.profile-mode .content-wrapper {
+  background: transparent !important;
+  background-color: transparent !important;
 }

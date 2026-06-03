@@ -1,0 +1,71 @@
+.address-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Занимает всю ширину списка */
+  padding: 24px 30px; 
+  background: #EAE0D5; 
+  border-radius: 12px;
+  margin-bottom: 20px;
+  position: relative;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 20px; 
+  line-height: 24px; /* Фиксируем высоту текста */
+  color: #333;
+  box-sizing: border-box; /* Заставляет браузер считать размеры строго одинаково */
+}
+
+.address-info {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Отступ между иконкой и текстом */
+}
+
+/* Кнопка троеточия */
+.dots-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Выпадающее меню */
+.action-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 10px;
+  background: #EAD8C8; /* Цвет фона меню (под цвет бокового меню) */
+  border: 1px solid #C09999;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  z-index: 50;
+  padding: 10px 0;
+  min-width: 200px;
+}
+
+.action-menu button {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #333;
+}
+
+.action-menu button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.action-menu .delete-btn {
+  color: #D9534F;
+}

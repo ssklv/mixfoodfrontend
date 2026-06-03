@@ -1,0 +1,248 @@
+/* Основной фон страницы оформления (чуть темнее карточек) */
+.checkout-page-wrapper {
+  min-height: 100vh;
+  background-color: #D6C7B7; /* Цвет фона за пределами карточек */
+  font-family: 'IBM Plex Mono', monospace;
+  padding: 40px 20px 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.checkout-container {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* --- ЛОГОТИП --- */
+.checkout-logo-header a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.logo-placeholder {
+  display: flex;
+  flex-direction: column;
+  color: #CC9D9D;
+}
+
+.logo-main {
+  font-family: 'Brush Script MT', cursive, sans-serif; /* Похоже на твой рукописный шрифт */
+  font-size: 48px;
+  line-height: 1;
+}
+
+.logo-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: #B56D6D; /* Чуть темнее для контраста */
+}
+
+/* --- ДВЕ КОЛОНКИ --- */
+.checkout-content {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.checkout-left-column,
+.checkout-right-column {
+  background-color: #E3D6C8; /* Светлый фон самих карточек */
+  border-radius: 15px;
+  padding: 40px;
+  color: #362B2B;
+}
+
+.checkout-left-column {
+  flex: 1.5; /* Левая колонка шире */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.checkout-right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- ТИПОГРАФИКА --- */
+.checkout-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+}
+
+/* --- ИНПУТЫ --- */
+.form-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-row {
+  display: flex;
+  gap: 20px;
+}
+
+.input-box {
+  position: relative;
+  flex: 1;
+  border: 1px solid #362B2B;
+  border-radius: 8px;
+  background-color: transparent;
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input-label {
+  font-size: 10px;
+  color: rgba(54, 43, 43, 0.6);
+  margin-bottom: 2px;
+}
+
+.input-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  color: #362B2B;
+  width: 100%;
+}
+
+.input-box input::placeholder {
+  color: rgba(54, 43, 43, 0.4);
+}
+
+/* Инпут адреса с иконкой и розовым фоном */
+.address-box {
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  background-color: #CBA59E; /* Розоватый цвет из макета */
+  border: none;
+  padding: 16px 20px;
+  border-radius: 8px;
+}
+
+.address-box input {
+  font-size: 18px;
+}
+
+.address-box input::placeholder {
+  color: #362B2B;
+}
+
+.location-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #2B2422;
+}
+
+/* Инпут времени */
+.time-box {
+  width: 150px;
+  padding: 12px 20px;
+}
+
+.time-box input {
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+/* --- ПРАВАЯ КОЛОНКА (СОСТАВ ЗАКАЗА) --- */
+.summary-divider-top {
+  border-top: 1px solid #362B2B;
+  margin: 20px 0;
+}
+
+.summary-divider-bottom {
+  border-top: 1px solid #362B2B;
+  margin: 30px 0 20px 0;
+}
+
+.summary-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.summary-item-left,
+.summary-item-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summary-item-right {
+  align-items: flex-end;
+}
+
+.item-name {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.item-price {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.item-weight,
+.item-quantity {
+  font-size: 14px;
+  color: rgba(54, 43, 43, 0.7);
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+/* Кнопка оформления (используем стили из корзины + адаптация под блок) */
+.submit-order {
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #CBA59E; /* Цвет из макета */
+  font-size: 18px;
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+@media (max-width: 900px) {
+  .checkout-content {
+    flex-direction: column;
+  }
+  
+  .checkout-left-column,
+  .checkout-right-column {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .input-row {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(88, 75, 72, 0.85); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-container {
+  display: flex;
+  width: 100%;
+  max-width: 980px; 
+  min-height: 560px;
+  background-color: #FCF3DE; 
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  font-family: 'IBM Plex Mono', monospace;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ЛЕВАЯ ЧАСТЬ */
+.modal-left-pane {
+  flex: 1;
+  background-color: #FDE49E; /* Желтый фон картинки */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.modal-image {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+/* ПРАВАЯ ЧАСТЬ */
+.modal-right-pane {
+  flex: 1;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+.modal-close-btn:hover {
+  opacity: 0.8;
+}
+
+.modal-info-header {
+  margin-bottom: 24px;
+}
+
+.modal-title {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 500;
+  color: #2c2c2c;
+  line-height: 1.2;
+}
+
+.modal-meta {
+  font-size: 16px;
+  color: #929292; 
+  font-weight: 400;
+}
+
+.modal-description-wrapper {
+  flex-grow: 1; 
+  margin-bottom: 32px;
+}
+
+.modal-description {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #555555;
+  font-weight: 400;
+}
+
+.modal-nutrition-section {
+  margin-bottom: 32px;
+}
+
+.nutrition-title {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #A4A4A4; 
+  font-weight: 400;
+}
+
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.nutrition-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nutrition-label {
+  font-size: 13px;
+  color: #2c2c2c;
+  font-weight: 500;
+}
+
+.nutrition-value {
+  font-size: 13px;
+  color: #555555;
+  font-weight: 400;
+}
+
+.modal-add-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: #CC9D9D;
+  color: #2c2c2c;
+  border: none;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'IBM Plex Mono', monospace;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-add-btn:hover {
+  background-color: #bfa0a0;
+}
+
+@media (max-width: 768px) {
+  .modal-container {
+    flex-direction: column;
+    min-height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .modal-left-pane {
+    padding: 20px;
+  }
+  
+  .modal-right-pane {
+    padding: 24px;
+  }
+
+  .modal-image {
+    max-width: 250px;
+  }
+}

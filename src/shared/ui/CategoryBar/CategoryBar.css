@@ -1,0 +1,32 @@
+.category-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background: #CC9D9D; /* Твой фирменный приглушенный цвет */
+  padding: 15px 30px;
+  border-radius: 50px;
+  width: fit-content;
+  margin: 20px auto;
+}
+
+.category-item {
+  background: transparent;
+  border: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 18px;
+  color: #554A4A;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.category-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.category-item.active {
+  background: #a67c7c; /* Чуть темнее при выборе */
+  color: #2E2626;
+  font-weight: bold;
+}

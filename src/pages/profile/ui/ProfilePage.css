@@ -130,7 +130,6 @@ body.profile-page-mode [class*="blob"] {
   font-family: 'IBM Plex Mono', monospace;
 }
 
-/* Правая контентная область */
 .profile-content-area {
   flex: 1;
 }
@@ -198,9 +197,9 @@ body.profile-page-mode [class*="blob"] {
   transition: opacity 0.2s ease;
 }
 
-/* Внедрение стилей валидации для интеграции с бэкендом Go */
+
 .profile-input-wrapper.input-has-error {
-  border-color: #D9534F !important; /* Красный цвет рамки при ошибке */
+  border-color: #D9534F !important; 
 }
 
 .field-error-text {
@@ -218,7 +217,7 @@ body.profile-page-mode [class*="blob"] {
 }
 
 .profile-success-message {
-  color: #2F9E44; /* Приятный зелёный цвет успеха */
+  color: #2F9E44; 
   font-size: 16px;
   font-family: 'IBM Plex Mono', monospace;
   margin-top: 5px;
@@ -235,25 +234,200 @@ body.profile-page-mode [class*="blob"] {
   gap: 15px;
 }
 
-/* Стилизация кнопки добавления адреса, чтобы она совпадала с карточками */
+
 .add-address-btn {
   display: flex;
   align-items: center;
   gap: 20px;
-  width: 100%; /* Занимает всю ширину списка */
+  width: 100%; 
   padding: 24px 30px;
   background: #EAE0D5; 
   border: none; 
   border-radius: 12px; 
   color: #333;
   font-size: 20px;
-  line-height: 24px; /* Должна быть такой же, как в карточке */
+  line-height: 24px; 
   cursor: pointer;
   font-family: 'IBM Plex Mono', monospace;
   transition: background 0.2s ease;
-  box-sizing: border-box; /* Убирает лишние невидимые пиксели браузера */
+  box-sizing: border-box; 
 }
 
 .add-address-btn:hover {
   background: #DFD3C5;
+}
+.order-card-custom {
+  background-color: #E5D0C0;
+  border-radius: 15px;
+  padding: 20px 25px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.2s;
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.order-meta-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order-id-label {
+  font-family: 'IBM Plex Mono', monospace;
+  color: rgba(54, 43, 43, 0.5);
+  font-size: 14px;
+}
+
+.order-date-label {
+  font-family: 'IBM Plex Mono', monospace;
+  color: #362B2B;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.order-status-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.order-status-badge.pending,
+.order-status-badge.confirmed {
+  color: #d98e2b;
+}
+.order-status-badge.cooking {
+  color: #2b6e9e;
+}
+.order-status-badge.ready {
+  color: #2e7d32;
+}
+.order-status-badge.completed {
+  color: #757575;
+}
+
+.order-divider-custom {
+  height: 1px;
+  background-color: #362B2B;
+  opacity: 0.3;
+  margin: 12px 0;
+}
+
+.order-items-preview-custom {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.food-icon {
+  font-size: 32px;
+}
+
+.more-items {
+  font-size: 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  color: rgba(54, 43, 43, 0.6);
+}
+
+.order-card-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  color: #362B2B;
+  margin-top: 8px;
+}
+
+.admin-status-selector {
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(54, 43, 43, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+}
+
+.admin-status-selector select {
+  background-color: #fff;
+  border: 1px solid #CBA59E;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.orders-list {
+  margin-top: 20px;
+}
+
+.empty-orders {
+  color: #7A7A7A;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.admin-status-selector {
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(54, 43, 43, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: #362B2B;
+}
+
+.admin-status-selector select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #E5D0C0;      
+  border: 1px solid #CBA59E;
+  border-radius: 12px;            
+  padding: 8px 32px 8px 16px;       
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: #362B2B;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23362B2B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.admin-status-selector select:hover {
+  border-color: #8d5c5a;
+  background-color: #ddcbbc;
+}
+
+.admin-status-selector select:focus {
+  outline: none;
+  border-color: #8d5c5a;
+  box-shadow: 0 0 0 2px rgba(141, 92, 90, 0.2);
+}
+
+.admin-status-selector select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.food-emoji-fallback {
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }

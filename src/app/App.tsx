@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Header } from '@/widgets/header/Header';
 import { Footer } from '@/widgets/footer/Footer';
@@ -12,6 +12,8 @@ import { Checkout } from '@/pages/checkout/Checkout';
 import { DishDetailsModal } from '@/entities/dish/ui/DishDetailsModal/DishDetailsModal';
 import { CartModal } from '@/entities/cart/ui/CartModal/CartModal'; 
 import { useUserStore } from '@/entities/user/model/userStore'; 
+import { GlobalToast } from '@/shared/ui/Toast/Toast';
+import { connectOrderSocket, closeOrderSocket } from '@/shared/lib/websocket';
 import ellipseImg from '@/assets/ellipse.svg'; 
 
 const CATEGORY_MAP: Record<string, number> = {
@@ -34,6 +36,15 @@ function App() {
 
   const isProfile = location.pathname === '/profile';
   const isCheckout = location.pathname === '/checkout';
+
+  // Подключаем вебсокет при авторизации
+  useEffect(() => {
+    if (isAuth) {
+      connectOrderSocket();
+    } else {
+      closeOrderSocket();
+    }
+  }, [isAuth]);
 
   const handleOpenAuth = (mode: 'login' | 'register') => {
     setAuthMode(mode);
@@ -87,6 +98,8 @@ function App() {
           onOpenCheckout={() => { setIsCartOpen(false); navigate('/checkout'); }} 
         />
       )}
+      
+      <GlobalToast />
     </div>
   );
 }

@@ -1,24 +1,21 @@
-/* Базовые стили шапки */
 .main-header {
   display: flex;
   align-items: center;
   justify-content: flex-start; 
   padding: 20px 80px 20px 40px; 
   
-  /* Цвет фона по умолчанию */
   background-color: transparent; 
   
   position: relative;
   z-index: 10; 
   width: 100%;
   gap: 80px; 
-  transition: background-color 0.3s ease; /* Плавный переход цвета */
+  transition: background-color 0.3s ease;
 }
 
-/* ИЗМЕНЕНИЕ: Если мы в профиле или на оформлении, шапка получает другой фон */
 .profile-mode .main-header,
 .checkout-mode .main-header {
-  background-color: #D6C7B7; /* Цвет фона, совпадающий с цветом карточек */
+  background-color: #D6C7B7;
 }
 
 .header-left {
@@ -47,7 +44,7 @@
   margin-top: 6px; 
 }
 
-/* ПОИСК */
+
 .header-search {
   position: relative;
   display: flex;

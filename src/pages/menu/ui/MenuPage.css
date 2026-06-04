@@ -1,18 +1,18 @@
 .menu-page-wrapper {
-  padding: 40px 60px; /* Увеличили боковой отступ до 60px, чтобы сдвинуть от левого края */
-  max-width: 1440px; /* Расширили контейнер, чтобы 4 карточки точно влезли в ряд */
+  padding: 40px 60px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
 .menu-category-section {
   margin-bottom: 80px;
-  scroll-margin-top: 100px; /* Чтобы навигационный бар не перекрывал заголовок при скролле */
+  scroll-margin-top: 100px;
 }
 
 .category-title {
-  font-family: 'IBM Plex Mono', monospace; /* Тот самый шрифт */
-  font-size: 40px; /* Размер как на макете */
-  font-weight: 400; /* Regular вес шрифта */
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 40px;
+  font-weight: 400;
   margin-bottom: 40px;
   color: #333333;
   text-align: left;
@@ -21,8 +21,8 @@
 .dishes-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 32px; /* Чуть увеличенное расстояние между карточками */
-  justify-content: flex-start; /* Карточки выстраиваются ровно слева направо */
+  gap: 32px;
+  justify-content: flex-start;
 }
 
 .menu-loading {
@@ -30,4 +30,26 @@
   font-family: 'IBM Plex Mono', monospace;
   font-size: 24px;
   padding: 100px;
+}
+
+@media (max-width: 768px) {
+  .menu-page-wrapper {
+    padding: 20px 16px;
+  }
+
+  .menu-category-section {
+    margin-bottom: 40px;
+    scroll-margin-top: 80px;
+  }
+
+  .category-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
 }

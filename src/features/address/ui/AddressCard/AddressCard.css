@@ -2,26 +2,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%; /* Занимает всю ширину списка */
+  width: 100%;
   padding: 24px 30px; 
-  background: #EAE0D5; 
+  background: #CC9D9D; 
   border-radius: 12px;
   margin-bottom: 20px;
   position: relative;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 20px; 
-  line-height: 24px; /* Фиксируем высоту текста */
+  line-height: 24px;
   color: #333;
-  box-sizing: border-box; /* Заставляет браузер считать размеры строго одинаково */
+  box-sizing: border-box;
 }
 
 .address-info {
   display: flex;
   align-items: center;
-  gap: 20px; /* Отступ между иконкой и текстом */
+  gap: 20px;
 }
 
-/* Кнопка троеточия */
 .dots-btn {
   background: none;
   border: none;
@@ -32,13 +31,12 @@
   justify-content: center;
 }
 
-/* Выпадающее меню */
 .action-menu {
   position: absolute;
   right: 0;
   top: 100%;
   margin-top: 10px;
-  background: #EAD8C8; /* Цвет фона меню (под цвет бокового меню) */
+  background: #EAD8C8;
   border: 1px solid #C09999;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);

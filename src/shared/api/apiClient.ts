@@ -5,7 +5,6 @@ export const apiClient = axios.create({
   withCredentials: true,
 });
 
-// Перехватчик запросов (добавляет токен)
 apiClient.interceptors.request.use((config) => {
   const token = sessionStorage.getItem('accessToken');
   if (token) {
@@ -14,15 +13,13 @@ apiClient.interceptors.request.use((config) => {
   return config;
 }, (error) => Promise.reject(error));
 
-// Перехватчик ответов (обрабатывает 401 ошибку)
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Если сервер говорит 401 — значит токен протух
-    if (error.response?.status === 401) {
+    const isAuthRequest = error.config?.url?.includes('/auth/login') || error.config?.url?.includes('/auth/register');
+    if (error.response?.status === 401 && !isAuthRequest) {
       sessionStorage.clear();
-      // Можно сделать принудительный переход на страницу логина
-      window.location.href = '/login';
+      window.location.href = '/';
     }
     return Promise.reject(error);
   }

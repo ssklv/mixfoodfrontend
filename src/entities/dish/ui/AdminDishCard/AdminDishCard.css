@@ -1,15 +1,13 @@
 .admin-dish-card {
-  background: #eaddcf;
-  border-radius: 20px;
+  background: #E5D0C0;
+  border-radius: 15px;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* Отступ между верхом и описанием */
+  margin-bottom: 20px;
   position: relative;
-  margin-bottom: 16px;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
-.card-top-row {
+.admin-dish-top-row {
   display: flex;
   gap: 20px;
   align-items: flex-start;
@@ -18,8 +16,9 @@
 .admin-dish-img {
   width: 100px;
   height: 100px;
-  border-radius: 15px;
+  border-radius: 12px;
   object-fit: cover;
+  background-color: #d1bba9;
   flex-shrink: 0;
 }
 
@@ -27,59 +26,94 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 12px;
+}
+
+.admin-dish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
-.dish-header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.admin-dish-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #362B2B;
 }
 
-.admin-dish-stats {
+.admin-dish-price {
+  font-size: 20px;
+  font-weight: 500;
+  color: #362B2B;
+}
+
+.admin-dish-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  font-size: 13px;
-  color: #555;
-}
-
-.admin-dish-desc {
-  background: #f5ece5;
-  border: 1px solid #dcd1c6;
-  border-radius: 12px;
-  padding: 15px;
-  margin: 0;
+  gap: 16px;
   font-size: 14px;
-  color: #333;
+  color: rgba(54, 43, 43, 0.7);
 }
 
-/* Кнопка точек и меню */
-.admin-menu-dots {
+.admin-dish-menu-container {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.admin-dish-dots-btn {
   background: none;
   border: none;
   cursor: pointer;
   padding: 5px;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  justify-content: center;
 }
 
-.dot {
-  width: 5px;
-  height: 5px;
-  background: #333;
-  border-radius: 50%;
-}
-
-.admin-actions-menu {
+.admin-dish-action-menu {
   position: absolute;
-  right: 20px;
-  top: 60px;
-  background: #fdfaf6;
-  border: 1px solid #dcd1c6;
+  right: 0;
+  top: 100%;
+  margin-top: 10px;
+  background: #EAD8C8;
+  border: 1px solid #C09999;
   border-radius: 12px;
-  padding: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  z-index: 10;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  z-index: 50;
+  padding: 10px 0;
+  min-width: 200px;
+}
+
+.admin-dish-action-menu button {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #362B2B;
+}
+
+.admin-dish-action-menu button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.admin-dish-action-menu .delete-btn {
+  color: #D9534F;
+}
+
+.admin-dish-description {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(54, 43, 43, 0.2);
+  font-size: 14px;
+  color: rgba(54, 43, 43, 0.8);
+  line-height: 1.4;
 }

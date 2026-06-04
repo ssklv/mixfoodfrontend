@@ -1,6 +1,5 @@
 import { DishForm } from '../../../../entities/dish/ui/DishForm/DishForm';
-import './DishFormModal.css'; // Просто скопируй стили из AddAddressModal или создай пустой
-
+import './DishFormModal.css';
 export const DishFormModal = ({ onClose }: { onClose: () => void }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>

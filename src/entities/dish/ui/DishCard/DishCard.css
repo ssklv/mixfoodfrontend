@@ -2,33 +2,26 @@
 
 .dish-showcase-card {
   width: 100%;
-  max-width: 321px;
-  min-height: 349px;
   background-color: #F3D8BD;
   border-radius: 24px;
-  padding: 24px;
+  padding: 16px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  /* Убрали cursor: pointer, если карточка не должна кликаться целиком */
   font-family: 'IBM Plex Mono', monospace;
-  /* Анимация удалена */
-  transition: none; 
 }
-
-/* Убрали .dish-showcase-card:hover полностью */
 
 .dish-showcase-image-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .dish-showcase-image-wrapper img {
   width: 100%;
-  max-width: 180px;
+  max-width: 140px;
   height: auto;
   aspect-ratio: 1 / 1;
   object-fit: contain;
@@ -37,21 +30,21 @@
 .dish-showcase-info {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   text-align: left;
   flex-grow: 1;
 }
 
 .dish-showcase-title {
-  margin: 0 0 10px 0;
-  font-size: 24px;
+  margin: 0 0 6px 0;
+  font-size: 18px;
   font-weight: 500;
   color: #2c2c2c;
   line-height: 1.2;
 }
 
 .dish-showcase-meta {
-  font-size: 16px;
+  font-size: 12px;
   color: #767676;
   font-weight: 400;
   margin-bottom: auto;
@@ -60,12 +53,14 @@
 .dish-showcase-footer {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Центрирует кнопку и цену по вертикали */
-  margin-top: 16px;
+  align-items: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .dish-showcase-price {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 500;
   color: #2c2c2c;
 }
@@ -74,16 +69,37 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
   background-color: #CC9D9D;
   color: #2c2c2c;
   border: none;
-  
   border-radius: 12px;
-  padding: 12px 20px; /* Увеличили внутренние отступы кнопки */
-  font-size: 18px;    /* Шрифт кнопки стал больше */
+  padding: 8px 16px;
+  font-size: 14px;
   font-weight: 500;
   font-family: 'IBM Plex Mono', monospace;
   cursor: pointer;
-  /* Убрали transition: background-color, если кнопка должна быть статичной */
+}
+
+@media (min-width: 769px) {
+  .dish-showcase-card {
+    max-width: 321px;
+    min-height: 349px;
+    padding: 24px;
+  }
+  .dish-showcase-image-wrapper img {
+    max-width: 180px;
+  }
+  .dish-showcase-title {
+    font-size: 24px;
+  }
+  .dish-showcase-meta {
+    font-size: 16px;
+  }
+  .dish-showcase-price {
+    font-size: 28px;
+  }
+  .dish-showcase-add-btn {
+    padding: 12px 20px;
+    font-size: 18px;
+  }
 }

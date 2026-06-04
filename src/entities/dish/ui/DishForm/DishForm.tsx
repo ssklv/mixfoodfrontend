@@ -2,6 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useDishStore, type Dish } from '../../model/dishStore';
 import './DishForm.css';
 
+const API_URL = 'http://localhost:8082';
+
+const getImageUrl = (url: string | undefined | null) => {
+  if (!url) return null;
+  if (url.startsWith('http')) return url;
+  return `${API_URL}${url}`;
+};
+
 interface DishFormProps {
   dishToEdit?: Dish | null;
   onClose?: () => void;
@@ -37,12 +45,11 @@ export const DishForm: React.FC<DishFormProps> = ({ dishToEdit, onClose }) => {
     categoryId: 1
   });
 
-  // Определяем, является ли категория "Напитком" (ID 6)
   const isDrink = Number(formData.categoryId) === 6;
 
   useEffect(() => {
     if (dishToEdit) {
-      setPreview(dishToEdit.imageUrl);
+      setPreview(getImageUrl(dishToEdit.imageUrl));
       setFormData({
         name: dishToEdit.name || '',
         price: String(dishToEdit.price || ''),
@@ -55,10 +62,24 @@ export const DishForm: React.FC<DishFormProps> = ({ dishToEdit, onClose }) => {
         volume: String(dishToEdit.volume || ''),
         categoryId: dishToEdit.categoryId || 1
       });
+    } else {
+      setPreview(null);
+      setImage(null);
+      setFormData({
+        name: '',
+        price: '',
+        description: '',
+        proteins: '',
+        fats: '',
+        carbs: '',
+        calories: '',
+        weight: '',
+        volume: '',
+        categoryId: 1
+      });
     }
   }, [dishToEdit]);
 
-  // Исправленная логика изменения: приводим числовые поля к строке, а categoryId к числу
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -83,7 +104,7 @@ export const DishForm: React.FC<DishFormProps> = ({ dishToEdit, onClose }) => {
         return;
       }
 
-      const token = localStorage.getItem('token') || '';
+      const token = localStorage.getItem('token') || sessionStorage.getItem('accessToken') || '';
       const headers: HeadersInit = { 'Authorization': `Bearer ${token}` };
 
       let imageUrl = dishToEdit ? dishToEdit.imageUrl : '';

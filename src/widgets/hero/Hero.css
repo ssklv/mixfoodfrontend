@@ -2,10 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 80px 60px 40px; 
-  margin-top: -100px; 
+  padding: 0px 80px 60px 40px;
+  margin-top: -100px;
   width: 100%;
-  min-height: calc(100vh - 120px); 
+  min-height: calc(100vh - 120px);
   position: relative;
   z-index: 1;
 }
@@ -19,7 +19,7 @@
 
 .hero-title {
   font-family: 'IBM Plex Mono', monospace;
-  font-weight: 700; 
+  font-weight: 700;
   font-size: 54px;
   line-height: 1.1;
   color: #362B2B;
@@ -28,8 +28,8 @@
 
 .hero-title span {
   display: block;
-  margin-top: 18px; 
-  font-weight: 400; 
+  margin-top: 18px;
+  font-weight: 400;
 }
 
 .hero-description {
@@ -38,19 +38,19 @@
   font-size: 20px;
   line-height: 1.6;
   color: #362B2B;
-  opacity: 0.8; 
+  opacity: 0.8;
   margin-bottom: 48px;
 }
 
 .hero-btn {
   font-family: 'IBM Plex Mono', monospace;
-  font-weight: 500; 
+  font-weight: 500;
   font-size: 18px;
   color: #362B2B;
-  background-color: #CC9D9D; 
-  padding: 16px 48px; 
+  background-color: #CC9D9D;
+  padding: 16px 48px;
   border: none;
-  border-radius: 15px; 
+  border-radius: 15px;
   cursor: pointer;
   transition: opacity 0.2s ease;
   margin-bottom: 64px;
@@ -62,7 +62,7 @@
 
 .hero-socials {
   display: flex;
-  gap: 28px; 
+  gap: 28px;
 }
 
 .social-box {
@@ -71,8 +71,8 @@
   justify-content: center;
   width: 52px;
   height: 52px;
-  background-color: #E5D0C0; 
-  border-radius: 12px; 
+  background-color: #E5D0C0;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -80,7 +80,7 @@
 .social-box:hover {
   opacity: 0.9;
   transform: translateY(-2px);
-  background-color: #dfc7b5; 
+  background-color: #dfc7b5;
 }
 
 .social-icon {
@@ -98,9 +98,70 @@
 }
 
 .hero-pizza {
-  max-width: 75%; 
+  max-width: 75%;
   height: auto;
   object-fit: contain;
-  margin-left: 410px;  
+  margin-left: 410px;
   margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    padding: 0 20px 40px 20px;
+    margin-top: -60px;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .hero-content {
+    align-items: center;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .hero-title span {
+    margin-top: 8px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .hero-btn {
+    padding: 12px 32px;
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .hero-socials {
+    gap: 20px;
+  }
+
+  .social-box {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero-image-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .hero-pizza {
+    max-width: 80%;
+    margin-left: 0;
+    margin-top: 0;
+  }
+  @media (max-width: 768px) {
+  .hero-section {
+    display: none;
+  }
+}
 }

@@ -1,7 +1,6 @@
-/* Основной фон страницы оформления (чуть темнее карточек) */
 .checkout-page-wrapper {
   min-height: 100vh;
-  background-color: #D6C7B7; /* Цвет фона за пределами карточек */
+  background-color: #D6C7B7; 
   font-family: 'IBM Plex Mono', monospace;
   padding: 40px 20px 80px 20px;
   display: flex;
@@ -16,7 +15,6 @@
   gap: 40px;
 }
 
-/* --- ЛОГОТИП --- */
 .checkout-logo-header a {
   text-decoration: none;
   display: inline-block;
@@ -29,7 +27,7 @@
 }
 
 .logo-main {
-  font-family: 'Brush Script MT', cursive, sans-serif; /* Похоже на твой рукописный шрифт */
+  font-family: 'Brush Script MT', cursive, sans-serif; 
   font-size: 48px;
   line-height: 1;
 }
@@ -37,10 +35,8 @@
 .logo-sub {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 14px;
-  color: #B56D6D; /* Чуть темнее для контраста */
+  color: #B56D6D;
 }
-
-/* --- ДВЕ КОЛОНКИ --- */
 .checkout-content {
   display: flex;
   gap: 30px;
@@ -49,14 +45,14 @@
 
 .checkout-left-column,
 .checkout-right-column {
-  background-color: #E3D6C8; /* Светлый фон самих карточек */
+  background-color: #E3D6C8; 
   border-radius: 15px;
   padding: 40px;
   color: #362B2B;
 }
 
 .checkout-left-column {
-  flex: 1.5; /* Левая колонка шире */
+  flex: 1.5;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -124,12 +120,11 @@
   color: rgba(54, 43, 43, 0.4);
 }
 
-/* Инпут адреса с иконкой и розовым фоном */
 .address-box {
   flex-direction: row;
   align-items: center;
   gap: 15px;
-  background-color: #CBA59E; /* Розоватый цвет из макета */
+  background-color: #CBA59E;
   border: none;
   padding: 16px 20px;
   border-radius: 8px;
@@ -150,7 +145,6 @@
   color: #2B2422;
 }
 
-/* Инпут времени */
 .time-box {
   width: 150px;
   padding: 12px 20px;
@@ -162,7 +156,6 @@
   letter-spacing: 2px;
 }
 
-/* --- ПРАВАЯ КОЛОНКА (СОСТАВ ЗАКАЗА) --- */
 .summary-divider-top {
   border-top: 1px solid #362B2B;
   margin: 20px 0;
@@ -221,12 +214,12 @@
   margin-bottom: 30px;
 }
 
-/* Кнопка оформления (используем стили из корзины + адаптация под блок) */
+
 .submit-order {
   width: 100%;
   padding: 16px;
   border-radius: 8px;
-  background-color: #CBA59E; /* Цвет из макета */
+  background-color: #CBA59E;
   font-size: 18px;
 }
 
@@ -268,19 +261,17 @@
   color: #362B2B;
 }
 
-/* --- СТИЛИ ДЛЯ READ-ONLY ПОЛЕЙ (Имя, Телефон) --- */
 .read-only-input {
-  background-color: rgba(54, 43, 43, 0.05) !important;
+  background-color: transparent;
   cursor: default;
 }
 
-/* --- СТИЛИ КНОПКИ "ОФОРМИТЬ ЗАКАЗ" --- */
 .submit-order {
   width: 100%;
   padding: 16px;
   border: none;
   border-radius: 8px;
-  background-color: #CBA59E; /* Цвет из макета */
+  background-color: #CBA59E;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 18px;
   color: #362B2B;
@@ -293,7 +284,6 @@
   background-color: #b9938c;
 }
 
-/* --- АДАПТИВНОСТЬ --- */
 @media (max-width: 900px) {
   .checkout-content {
     flex-direction: column;

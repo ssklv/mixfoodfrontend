@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCartStore } from '@/entities/cart/model/cartStore';
 import { useDishStore, type Dish } from '@/entities/dish/model/dishStore';
 import { useUserStore, type Address } from '@/entities/user/model/userStore';
+import { useOrderStore } from '@/entities/order/model/orderStore';
 
 import { SelectAddressModal } from '@/features/address/ui/SelectAddressModal/SelectAddressModal';
 
@@ -12,9 +13,10 @@ import './Checkout.css';
 export const Checkout: React.FC = () => {
   const navigate = useNavigate();
 
-  const { items } = useCartStore();
+  const { items, clearCart } = useCartStore();
   const { dishes } = useDishStore();
   const { userName, userPhone } = useUserStore();
+  const { createOrder } = useOrderStore();
 
   const [formData, setFormData] = useState({
     time: '',
@@ -24,11 +26,12 @@ export const Checkout: React.FC = () => {
 
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
 
+  const [submitting, setSubmitting] = useState(false);
+
   const cartDishes = useMemo(() => {
     return items
       .map((item) => {
         const dish = dishes.find((d) => d.id === item.id);
-
         return dish
           ? {
               ...dish,
@@ -49,6 +52,15 @@ export const Checkout: React.FC = () => {
     );
   }, [cartDishes]);
 
+  const formatFullAddress = (address: Address): string => {
+    const parts = [address.street_house];
+    if (address.entrance) parts.push(`под. ${address.entrance}`);
+    if (address.floor) parts.push(`эт. ${address.floor}`);
+    if (address.apartment) parts.push(`кв. ${address.apartment}`);
+    if (address.door_code) parts.push(`код ${address.door_code}`);
+    return parts.join(', ');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -62,20 +74,33 @@ export const Checkout: React.FC = () => {
       return;
     }
 
-    const orderData = {
-      userName,
-      userPhone,
+    if (cartDishes.length === 0) {
+      alert('Корзина пуста');
+      return;
+    }
+
+    const orderPayload = {
       addressId: selectedAddress.id,
       deliveryTime: formData.time,
-      items: cartDishes,
-      total,
+      items: cartDishes.map((item) => ({
+        productId: item.id,
+        quantity: item.quantity,
+        price: item.price,
+      })),
+      totalPrice: total,
     };
 
-    console.log('Отправка заказа:', orderData);
+    setSubmitting(true);
+    const success = await createOrder(orderPayload);
+    setSubmitting(false);
 
-    // здесь позже подключим orderStore.createOrder()
-
-    alert('Заказ подготовлен к отправке');
+    if (success) {
+      clearCart();
+      alert('Заказ успешно создан!');
+      navigate('/profile');
+    } else {
+      alert('Ошибка при создании заказа. Попробуйте позже.');
+    }
   };
 
   return (
@@ -98,7 +123,6 @@ export const Checkout: React.FC = () => {
               <div className="input-row">
                 <div className="input-box">
                   <span className="input-label">Имя</span>
-
                   <input
                     type="text"
                     value={userName || ''}
@@ -108,10 +132,7 @@ export const Checkout: React.FC = () => {
                 </div>
 
                 <div className="input-box">
-                  <span className="input-label">
-                    Телефон
-                  </span>
-
+                  <span className="input-label">Телефон</span>
                   <input
                     type="text"
                     value={userPhone || ''}
@@ -130,21 +151,17 @@ export const Checkout: React.FC = () => {
               {selectedAddress ? (
                 <div
                   className="selected-address-box"
-                  onClick={() =>
-                    setIsAddressModalOpen(true)
-                  }
+                  onClick={() => setIsAddressModalOpen(true)}
                 >
                   <span className="selected-address-text">
-                    {selectedAddress.street_house}
+                    {formatFullAddress(selectedAddress)}
                   </span>
                 </div>
               ) : (
                 <button
                   type="button"
                   className="select-address-btn"
-                  onClick={() =>
-                    setIsAddressModalOpen(true)
-                  }
+                  onClick={() => setIsAddressModalOpen(true)}
                 >
                   Выберите адрес доставки
                 </button>
@@ -162,24 +179,12 @@ export const Checkout: React.FC = () => {
                   name="time"
                   value={formData.time}
                   onChange={(e) => {
-                    let value =
-                      e.target.value.replace(
-                        /[^0-9:]/g,
-                        ''
-                      );
-
-                    if (
-                      value.length === 2 &&
-                      !value.includes(':')
-                    ) {
+                    let value = e.target.value.replace(/[^0-9:]/g, '');
+                    if (value.length === 2 && !value.includes(':')) {
                       value += ':';
                     }
-
                     if (value.length <= 5) {
-                      setFormData({
-                        ...formData,
-                        time: value,
-                      });
+                      setFormData({ ...formData, time: value });
                     }
                   }}
                   placeholder="12:30"
@@ -200,38 +205,21 @@ export const Checkout: React.FC = () => {
             <div className="summary-items-list">
               {cartDishes.length > 0 ? (
                 cartDishes.map((item) => (
-                  <div
-                    key={item.id}
-                    className="summary-item"
-                  >
+                  <div key={item.id} className="summary-item">
                     <div className="summary-item-left">
-                      <span className="item-name">
-                        {item.name}
-                      </span>
-
+                      <span className="item-name">{item.name}</span>
                       <span className="item-weight">
-                        999 г
+                        {item.weight ? `${item.weight} г` : (item.volume ? `${item.volume} мл` : '')}
                       </span>
                     </div>
-
                     <div className="summary-item-right">
-                      <span className="item-price">
-                        {item.price}₽
-                      </span>
-
-                      <span className="item-quantity">
-                        {item.quantity} шт.
-                      </span>
+                      <span className="item-price">{item.price}₽</span>
+                      <span className="item-quantity">{item.quantity} шт.</span>
                     </div>
                   </div>
                 ))
               ) : (
-                <p
-                  style={{
-                    padding: '20px 0',
-                    color: '#7A7A7A',
-                  }}
-                >
+                <p style={{ padding: '20px 0', color: '#7A7A7A' }}>
                   Корзина пуста
                 </p>
               )}
@@ -241,17 +229,15 @@ export const Checkout: React.FC = () => {
 
             <div className="summary-total">
               <span>К оплате</span>
-
-              <span className="total-sum">
-                {total}₽
-              </span>
+              <span className="total-sum">{total}₽</span>
             </div>
 
             <button
               type="submit"
               className="capsule-checkout-btn submit-order"
+              disabled={submitting}
             >
-              Оформить заказ
+              {submitting ? 'Оформление...' : 'Оформить заказ'}
             </button>
           </div>
         </form>
@@ -259,9 +245,7 @@ export const Checkout: React.FC = () => {
 
       {isAddressModalOpen && (
         <SelectAddressModal
-          onClose={() =>
-            setIsAddressModalOpen(false)
-          }
+          onClose={() => setIsAddressModalOpen(false)}
           onSelect={(address) => {
             setSelectedAddress(address);
             setIsAddressModalOpen(false);

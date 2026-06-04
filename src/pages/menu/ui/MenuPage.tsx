@@ -16,7 +16,6 @@ const CATEGORIES = [
 export const MenuPage: React.FC = () => {
   const { dishes, fetchDishes, isLoading } = useDishStore();
   
-  // Состояние для хранения выбранного блюда (для модального окна)
   const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
 
   useEffect(() => {
@@ -44,7 +43,6 @@ export const MenuPage: React.FC = () => {
                 <DishCard 
                   key={dish.id} 
                   dish={dish} 
-                  // Передаем функцию для открытия модального окна
                   onOpenDetails={(dish) => setSelectedDish(dish)} 
                 />
               ))}
@@ -53,7 +51,6 @@ export const MenuPage: React.FC = () => {
         );
       })}
 
-      {/* Рендерим модальное окно, если выбрано блюдо */}
       {selectedDish && (
         <DishDetailsModal 
           dish={selectedDish} 

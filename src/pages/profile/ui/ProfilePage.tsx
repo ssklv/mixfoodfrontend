@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Добавили импорт
 import { useUserStore } from '../../../entities/user/model/userStore';
-import { useDishStore, type Dish } from '../../../entities/dish/model/dishStore'; // Импорт стора и типа Dish
+import { useDishStore, type Dish } from '../../../entities/dish/model/dishStore'; 
 import { AddAddressModal } from '../../../features/address/ui/AddAddressModal/AddAddressModal';
 import { DishForm } from '../../../entities/dish/ui/DishForm/DishForm';
 import { AddressCard } from '../../../features/address/ui/AddressCard/AddressCard';
 import { AdminDishCard } from '../../../entities/dish/ui/AdminDishCard/AdminDishCard'; 
 import './ProfilePage.css';
 import { type Address } from '../../../entities/user/model/userStore';
+
 export type ProfileTab = 'orders' | 'history' | 'data' | 'addresses' | 'admin_menu';
 
 export const ProfilePage: React.FC = () => {
+  const navigate = useNavigate(); // Инициализируем хук навигации
   const { 
     userName, userPhone, userEmail, role, logout, fetchProfile, 
     updateProfile, isLoading, addresses, fetchAddresses, deleteAddress 
   } = useUserStore();
 
-  // Подключаем стор для блюд
   const { dishes, fetchDishes, deleteDish } = useDishStore();
 
   const [activeTab, setActiveTab] = useState<'orders' | 'history' | 'data' | 'addresses' | 'admin_menu'>('orders');
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
-  const [isDishModalOpen, setIsDishModalOpen] = useState(false); // Состояние для модалки блюда
+  const [isDishModalOpen, setIsDishModalOpen] = useState(false); 
   const [editingAddress, setEditingAddress] = useState<Address | null>(null);
-  const [editingDish, setEditingDish] = useState<Dish | null>(null); // Состояние для редактируемого блюда
+  const [editingDish, setEditingDish] = useState<Dish | null>(null); 
   
   const [activeMenuId, setActiveMenuId] = useState<number | null>(null);
 
@@ -35,6 +37,12 @@ export const ProfilePage: React.FC = () => {
   const [emailError, setEmailError] = useState<string | null>(null);
   const [globalError, setGlobalError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<boolean>(false);
+
+  // Обработчик выхода
+  const handleLogout = () => {
+    logout();      // Вызываем логику выхода из стора
+    navigate('/'); // Перенаправляем на главную
+  };
 
   useEffect(() => {
     fetchProfile();
@@ -101,7 +109,7 @@ export const ProfilePage: React.FC = () => {
         </nav>
 
         <hr className="sidebar-divider" />
-        <button className="logout-btn" onClick={logout}>
+        <button className="logout-btn" onClick={handleLogout}>
           <span className="logout-icon">➔</span> Выйти
         </button>
       </aside>
@@ -133,6 +141,7 @@ export const ProfilePage: React.FC = () => {
           </div>
         )}
 
+        {/* ... (остальной JSX без изменений) ... */}
         {activeTab === 'orders' && <div className="tab-content-card"><h2>Активные заказы</h2><p style={{ color: '#7A7A7A' }}>Нет active-ных заказов</p></div>}
         {activeTab === 'history' && <div className="tab-content-card"><h2>История заказов</h2><p style={{ color: '#7A7A7A' }}>История пуста</p></div>}
 

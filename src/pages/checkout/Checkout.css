@@ -230,6 +230,69 @@
   font-size: 18px;
 }
 
+.select-address-btn {
+  width: 100%;
+  padding: 16px 20px;
+  background-color: #CBA59E; /* Твой розовый цвет из макета */
+  border: none;
+  border-radius: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 18px;
+  color: #362B2B;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.select-address-btn:hover {
+  opacity: 0.9;
+}
+
+/* --- ВЫБРАННЫЙ АДРЕС (РОЗОВАЯ ПЛАШКА) --- */
+.selected-address-box {
+  width: 100%;
+  padding: 16px 20px;
+  background-color: #CBA59E; /* Тот же цвет, что был в address-box */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.selected-address-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 18px;
+  color: #362B2B;
+}
+
+/* --- СТИЛИ ДЛЯ READ-ONLY ПОЛЕЙ (Имя, Телефон) --- */
+.read-only-input {
+  background-color: rgba(54, 43, 43, 0.05) !important;
+  cursor: default;
+}
+
+/* --- СТИЛИ КНОПКИ "ОФОРМИТЬ ЗАКАЗ" --- */
+.submit-order {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #CBA59E; /* Цвет из макета */
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 18px;
+  color: #362B2B;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-order:hover {
+  background-color: #b9938c;
+}
+
 /* --- АДАПТИВНОСТЬ --- */
 @media (max-width: 900px) {
   .checkout-content {
@@ -246,3 +309,4 @@
     flex-direction: column;
   }
 }
+

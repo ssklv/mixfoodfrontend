@@ -1,28 +1,31 @@
+/* Базовые стили шапки */
 .main-header {
   display: flex;
   align-items: center;
   justify-content: flex-start; 
   padding: 20px 80px 20px 40px; 
   
-  /* 1. ДЕЛАЕМ ФОН ПРОЗРАЧНЫМ */
+  /* Цвет фона по умолчанию */
   background-color: transparent; 
   
-  /* 2. ПОДНИМАЕМ ШАПКУ НАД ФОНОМ */
   position: relative;
   z-index: 10; 
-  
   width: 100%;
   gap: 80px; 
+  transition: background-color 0.3s ease; /* Плавный переход цвета */
+}
+
+/* ИЗМЕНЕНИЕ: Если мы в профиле или на оформлении, шапка получает другой фон */
+.profile-mode .main-header,
+.checkout-mode .main-header {
+  background-color: #D6C7B7; /* Цвет фона, совпадающий с цветом карточек */
 }
 
 .header-left {
   display: flex;
   flex-direction: column;
-  /* gap убран, так как здесь остался только логотип */
   min-width: 220px; 
 }
-
-/* Класс .address-picker полностью удален */
 
 .logo-container {
   display: flex;
@@ -41,25 +44,20 @@
   font-size: 14px;
   color: #8D5C5A;
   margin-left: 10px;
-  
-  /* 👇 ИСПРАВЛЕНО: Отодвинули подзаголовок чуть ниже от "МиксФуд" */
   margin-top: 6px; 
 }
 
-/* ПОИСК (Сделали длиннее) */
+/* ПОИСК */
 .header-search {
   position: relative;
   display: flex;
   align-items: center;
-  width: 540px; /* Увеличили длину поиска для большего простора */
+  width: 540px;
 }
 
 .header-search input {
   width: 100%;
-  
-  /* ИСПРАВЛЕНО: Одинаковые отступы сверху и снизу (16px), чтобы текст стоял ровно */
   padding: 16px 45px 16px 40px; 
-  
   border: none;
   border-radius: 8px;
   background-color: #E5D0C0; 
@@ -67,8 +65,6 @@
   color: rgba(54, 43, 43, 0.5);
   outline: none;
   font-family: 'IBM Plex Mono', monospace;
-  
-  /* ИСПРАВЛЕНО: Добавили box-sizing, чтобы padding не ломал общую ширину */
   box-sizing: border-box;
 }
 
@@ -80,8 +76,6 @@
   position: absolute;
   left: 12px;
   color: rgba(54, 43, 43, 0.5);
-  
-  /* ИСПРАВЛЕНО: Жестко центрируем иконку лупы по вертикали */
   top: 50%;
   transform: translateY(-50%);
 }
@@ -102,8 +96,6 @@
   padding: 0;
   color: rgba(54, 43, 43, 0.5);
   transition: all 0.2s ease;
-  
-  /* ИСПРАВЛЕНО: Жестко центрируем кнопку крестика по вертикали */
   top: 50%;
   transform: translateY(-50%);
 }
@@ -121,31 +113,32 @@
   color: rgba(54, 43, 43, 0.8);
 }
 
-/* БЛОК КНОПОК (Сделали расстояние больше) */
+/* БЛОК КНОПОК */
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 40px; /* Заметно увеличили расстояние между кнопками регистрации, входа и корзины */
+  gap: 40px;
   margin-left: auto; 
 }
 
 .logo-link {
-  text-decoration: none; /* Убираем подчеркивание */
-  color: inherit;       /* Наследуем цвет текста от родителя */
+  text-decoration: none;
+  color: inherit;
   cursor: pointer;
 }
 
 .logo-link:hover {
-  opacity: 0.8;         /* Легкий эффект при наведении */
+  opacity: 0.8;
   transition: 0.2s;
 }
 
+/* ДРОПДАУН ПОИСКА */
 .search-results-dropdown {
   position: absolute;
-  top: calc(100% + 10px); /* Отступ от инпута вниз */
+  top: calc(100% + 10px);
   left: 0;
   width: 100%;
-  background-color: #E5D0C0; /* Цвет фона как в макете */
+  background-color: #E5D0C0;
   border-radius: 16px;
   padding: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -189,23 +182,21 @@
   font-size: 15px;
 }
 
-/* ==========================================================================
-   ИЗМЕНЕННЫЕ СТИЛИ ДЛЯ КНОПКИ КОРЗИНЫ ПО МАКЕТУ (КАПСУЛА)
-   ========================================================================== */
+/* КНОПКА КОРЗИНЫ */
 .header-cart-capsule {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  background-color: #CC9D9D; /* Розовато-бежевый оттенок из макета */
+  background-color: #CC9D9D;
   border: none;
-  border-radius: 15px; /* Скругленная форма капсулы */
+  border-radius: 15px;
   padding: 0 28px;
-  height: 52px; /* Фиксированная высота для идеального выравнивания */
+  height: 52px;
   cursor: pointer;
   font-family: 'IBM Plex Mono', monospace;
-  color: #362B2B; /* Темный цвет текста */
-  font-size: 20px; /* Крупный размер шрифта из макета */
+  color: #362B2B;
+  font-size: 20px;
   font-weight: 500;
   transition: background-color 0.2s ease, transform 0.1s ease;
   box-sizing: border-box;
@@ -217,24 +208,4 @@
 
 .header-cart-capsule:active {
   transform: scale(0.98);
-}
-
-.cart-capsule-price {
-  font-weight: 500;
-  letter-spacing: -0.5px;
-}
-
-.cart-capsule-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #362B2B;
-}
-
-.cart-capsule-count {
-  font-weight: 500;
-}
-
-.cart-capsule-text {
-  font-weight: 500;
 }

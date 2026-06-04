@@ -10,7 +10,6 @@ interface ProfileContentProps {
 export const ProfileContent: React.FC<ProfileContentProps> = ({ activeTab }) => {
   return (
     <main className="profile-content">
-      {/* АКТИВНЫЕ ЗАКАЗЫ */}
       {activeTab === 'orders' && (
         <div className="tab-section">
           <h1 className="tab-title">Активные заказы</h1>
@@ -66,7 +65,6 @@ export const ProfileContent: React.FC<ProfileContentProps> = ({ activeTab }) => 
         </div>
       )}
 
-      {/* ДАННЫЕ */}
       {activeTab === 'data' && (
         <div className="tab-section">
           <h1 className="tab-title">Личные данные</h1>

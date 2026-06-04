@@ -1,0 +1,131 @@
+/* Оверлей (затемнение фона) */
+.address-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Контейнер модального окна */
+.address-modal-container {
+  position: relative;
+  background-color: #F5E6D3; /* Фирменный кремовый фон */
+  width: 100%;
+  max-width: 750px;
+  min-height: 450px;
+  border-radius: 24px;
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #362B2B;
+}
+
+/* Круглая кнопка закрытия */
+.address-modal-close-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 32px;
+  height: 32px;
+  background-color: #1A1A1A;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.address-modal-close-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Заголовок окна */
+.address-modal-title {
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0 0 30px 0;
+  letter-spacing: 0.5px;
+}
+
+/* Контейнер списка */
+.address-modal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+/* Обычная карточка адреса */
+.address-modal-item {
+  background-color: #E3D6C8;
+  padding: 18px 24px;
+  border-radius: 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+/* Выбранная карточка адреса (пунктир из макета) */
+.address-modal-item.selected {
+  border: 2px dashed #1A1A1A;
+  background-color: #E3D6C8;
+}
+
+/* Текст «Добавить новый адрес» */
+.address-modal-add-btn {
+  background: none;
+  border: none;
+  color: #362B2B;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  margin-bottom: auto; /* Прижимает кнопку «Сохранить» к низу */
+  width: max-content;
+}
+
+.address-modal-add-btn .add-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+/* Капсульная кнопка «Сохранить» */
+.address-modal-submit-btn {
+  width: 280px;
+  padding: 16px;
+  background-color: #CBA59E; /* Твой розово-пастельный цвет */
+  color: #362B2B;
+  border: none;
+  border-radius: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 30px;
+}
+
+.address-modal-submit-btn:hover {
+  background-color: #B9938C;
+}
+
+.no-addresses-text {
+  color: #7A7A7A;
+  font-size: 14px;
+}

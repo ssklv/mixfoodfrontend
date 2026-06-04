@@ -24,9 +24,3 @@
 .category-item:hover {
   background: rgba(255, 255, 255, 0.2);
 }
-
-.category-item.active {
-  background: #a67c7c; /* Чуть темнее при выборе */
-  color: #2E2626;
-  font-weight: bold;
-}

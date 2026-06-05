@@ -2,18 +2,18 @@ import { useState, useMemo } from 'react';
 import { Button } from '@/shared/ui/Button/Button';
 import { useUserStore } from '@/entities/user/model/userStore';
 import { useDishStore } from '@/entities/dish/model/dishStore';
-import { useCartStore } from '@/entities/cart/model/cartStore'; // Подключаем стор корзины
+import { useCartStore } from '@/entities/cart/model/cartStore';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
-// Базовый URL для картинок
+
 const API_URL = 'http://localhost:8082';
 
 interface HeaderProps {
   onOpenAuth: (mode: 'login' | 'register') => void;
   onOpenProfile: () => void;
   onOpenDishDetails: (dish: any) => void;
-  onOpenCart: () => void; // Проп для открытия корзины
+  onOpenCart: () => void; 
 }
 
 export const Header = ({ onOpenAuth, onOpenProfile, onOpenDishDetails, onOpenCart }: HeaderProps) => {
@@ -22,10 +22,10 @@ export const Header = ({ onOpenAuth, onOpenProfile, onOpenDishDetails, onOpenCar
   const userName = useUserStore((state) => state.userName);
   const dishes = useDishStore((state) => state.dishes);
 
-  // Подписываемся на состояние корзины
+  
   const cartItems = useCartStore((state) => state.items);
 
-  // Вычисляем общее количество товаров и итоговую сумму
+  
   const { totalQuantity, totalPrice } = useMemo(() => {
     let quantity = 0;
     let price = 0;
@@ -41,14 +41,13 @@ export const Header = ({ onOpenAuth, onOpenProfile, onOpenDishDetails, onOpenCar
     return { totalQuantity: quantity, totalPrice: price };
   }, [cartItems, dishes]);
 
-  // Функция для получения полного пути к картинке
   const getImageUrl = (url: string | undefined | null) => {
     if (!url) return '/placeholder.png';
     if (url.startsWith('http')) return url;
     return `${API_URL}${url}`;
   };
 
-  // Логика фильтрации
+
   const filteredDishes = useMemo(() => {
     if (!searchQuery.trim()) return [];
     return dishes.filter((dish) =>
@@ -76,7 +75,7 @@ export const Header = ({ onOpenAuth, onOpenProfile, onOpenDishDetails, onOpenCar
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         
-        {/* Выпадающий список результатов */}
+    
         {searchQuery.trim() && (
           <div className="search-results-dropdown">
             {filteredDishes.length > 0 ? (
@@ -120,10 +119,9 @@ export const Header = ({ onOpenAuth, onOpenProfile, onOpenDishDetails, onOpenCar
           </>
         )}
 
-        {/* Интеллектуальная кнопка-капсула корзины */}
         <button className="header-cart-capsule" onClick={onOpenCart}>
           {totalQuantity > 0 ? (
-            /* Состояние: В корзине есть товары */
+      
             <>
               <span className="cart-capsule-price">{totalPrice}₽</span>
               <div className="cart-capsule-icon-wrapper">
@@ -136,7 +134,7 @@ export const Header = ({ onOpenAuth, onOpenProfile, onOpenDishDetails, onOpenCar
               <span className="cart-capsule-count">{totalQuantity}</span>
             </>
           ) : (
-            /* Состояние по умолчанию: Корзина пуста */
+
             <>
               <div className="cart-capsule-icon-wrapper">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#362B2B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

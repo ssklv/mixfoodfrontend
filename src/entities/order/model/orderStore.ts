@@ -28,7 +28,7 @@ export interface Order {
   createdAt: string;
   updatedAt: string;
   items: OrderItem[];
-  address?: Address; // ← добавлено для администратора
+  address?: Address;
 }
 
 export interface CreateOrderPayload {

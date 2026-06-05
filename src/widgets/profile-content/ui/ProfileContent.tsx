@@ -37,7 +37,6 @@ export const ProfileContent: React.FC<ProfileContentProps> = ({ activeTab }) => 
         </div>
       )}
 
-      {/* ИСТОРИЯ */}
       {activeTab === 'history' && (
         <div className="tab-section">
           <h1 className="tab-title">История заказов</h1>
@@ -86,7 +85,6 @@ export const ProfileContent: React.FC<ProfileContentProps> = ({ activeTab }) => 
         </div>
       )}
 
-      {/* АДРЕСА */}
       {activeTab === 'addresses' && (
         <div className="tab-section address-section">
           <div className="address-card">

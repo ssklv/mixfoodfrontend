@@ -1,4 +1,3 @@
-/* Оверлей (затемнение фона) */
 .address-modal-overlay {
   position: fixed;
   top: 0;
@@ -12,10 +11,10 @@
   z-index: 1000;
 }
 
-/* Контейнер модального окна */
+
 .address-modal-container {
   position: relative;
-  background-color: #F5E6D3; /* Фирменный кремовый фон */
+  background-color: #F5E6D3; 
   width: 100%;
   max-width: 750px;
   min-height: 450px;
@@ -28,7 +27,6 @@
   color: #362B2B;
 }
 
-/* Круглая кнопка закрытия */
 .address-modal-close-btn {
   position: absolute;
   top: 25px;
@@ -49,7 +47,7 @@
   transform: scale(1.1);
 }
 
-/* Заголовок окна */
+
 .address-modal-title {
   font-size: 28px;
   font-weight: 500;
@@ -57,7 +55,7 @@
   letter-spacing: 0.5px;
 }
 
-/* Контейнер списка */
+
 .address-modal-list {
   display: flex;
   flex-direction: column;
@@ -67,7 +65,7 @@
   overflow-y: auto;
 }
 
-/* Обычная карточка адреса */
+
 .address-modal-item {
   background-color: #E3D6C8;
   padding: 18px 24px;
@@ -78,13 +76,13 @@
   transition: all 0.2s ease;
 }
 
-/* Выбранная карточка адреса (пунктир из макета) */
+
 .address-modal-item.selected {
   border: 2px dashed #1A1A1A;
   background-color: #E3D6C8;
 }
 
-/* Текст «Добавить новый адрес» */
+
 .address-modal-add-btn {
   background: none;
   border: none;
@@ -96,7 +94,7 @@
   align-items: center;
   gap: 10px;
   padding: 0;
-  margin-bottom: auto; /* Прижимает кнопку «Сохранить» к низу */
+  margin-bottom: auto;
   width: max-content;
 }
 
@@ -105,11 +103,11 @@
   line-height: 1;
 }
 
-/* Капсульная кнопка «Сохранить» */
+
 .address-modal-submit-btn {
   width: 280px;
   padding: 16px;
-  background-color: #CBA59E; /* Твой розово-пастельный цвет */
+  background-color: #CBA59E; 
   color: #362B2B;
   border: none;
   border-radius: 16px;

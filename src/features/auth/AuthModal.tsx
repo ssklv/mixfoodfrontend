@@ -172,7 +172,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ initialMode, onClose }) =>
           <div className={`input-wrapper ${fieldErrors.password ? 'has-error' : ''}`}>
             <span className="placeholder-text">Пароль</span>
             <input 
-              type="text"      // ← видимый пароль
+              type="text"     
               value={password} 
               onChange={(e) => setPassword(e.target.value)} 
               required 
@@ -184,7 +184,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ initialMode, onClose }) =>
           {generalError && <div className="auth-error">{generalError}</div>}
 
           <button type="submit" className="auth-submit" disabled={isLoading}>
-            {isLoading ? 'Загрузка...' : (activeTab === 'login' ? 'Войти' : 'Создать аккаунт')}
+            {isLoading ? 'Загрузка' : (activeTab === 'login' ? 'Войти' : 'Создать аккаунт')}
           </button>
         </form>
 

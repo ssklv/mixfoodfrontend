@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  background: #CC9D9D; /* Твой фирменный приглушенный цвет */
+  background: #CC9D9D; 
   padding: 15px 30px;
   border-radius: 50px;
   width: fit-content;

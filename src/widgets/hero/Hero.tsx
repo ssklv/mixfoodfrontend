@@ -1,6 +1,5 @@
 import './Hero.css';
 
-// Импортируем иконки соцсетей из твоей папки assets
 import vkIcon from '../../assets/vk.svg';
 import okIcon from '../../assets/ok.svg';
 import telegramIcon from '../../assets/telegram.svg';
@@ -10,11 +9,11 @@ import pizza from '../../assets/pizza.svg';
 export const Hero = () => {
   return (
     <section className="hero-section">
-      {/* Левая текстовая часть */}
+
       <div className="hero-content">
         <h1 className="hero-title">
           Искусство вкуса
-          <span>в каждой детали!</span> {/* Убрали <br />, теперь отступ настраивается в CSS */}
+          <span>в каждой детали!</span> 
         </h1>
         
         <p className="hero-description">
@@ -26,8 +25,6 @@ export const Hero = () => {
         <button className="hero-btn">
           Заказать
         </button>
-
-        {/* Квадратики под соцсети */}
         <div className="hero-socials">
           <a href="https://vk.com" target="_blank" rel="noreferrer" className="social-box" aria-label="Вконтакте">
             <img src={vkIcon} alt="Вконтакте" className="social-icon" />
@@ -47,7 +44,6 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Правая часть под пиццу */}
       <div className="hero-image-container">
         <img src={pizza} className="hero-pizza" />
       </div>

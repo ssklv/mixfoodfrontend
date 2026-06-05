@@ -28,10 +28,9 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* ЛЕВАЯ ЧАСТЬ */
 .modal-left-pane {
   flex: 1;
-  background-color: #FDE49E; /* Желтый фон картинки */
+  background-color: #FDE49E;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -8,14 +8,14 @@ export const Footer = () => {
   return (
     <footer className="main-footer">
       <div className="footer-column logo-column">
-        {/* Разделили логотип на два цвета */}
+      
         <div className="logo-title">
           <span className="logo-pink">Микс</span>
           <span className="logo-brown">Фуд</span>
         </div>
         <div className="logo-subtitle">От закусок до десертов</div>
         
-        {/* Квадратики для соцсетей с твоими SVG */}
+   
         <div className="footer-socials">
           <button className="social-btn">
             <img src={vkIcon} alt="ВКонтакте" />

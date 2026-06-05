@@ -67,7 +67,7 @@ export const AddAddressModal: React.FC<AddAddressModalProps> = ({
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         
-        {/* Кнопка закрытия крестиком */}
+
         <button type="button" className="close-x-btn" onClick={onClose}>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1 1L13 13M13 1L1 13" stroke="#333" strokeWidth="2" strokeLinecap="round"/>
@@ -75,7 +75,6 @@ export const AddAddressModal: React.FC<AddAddressModalProps> = ({
         </button>
 
         <div className="modal-body">
-          {/* ЛЕВАЯ КОЛОНКА (ФОРМА) */}
           <div className="form-column">
             <h2>{addressToEdit ? 'Редактировать адрес' : 'Новый адрес'}</h2>
             
@@ -124,9 +123,8 @@ export const AddAddressModal: React.FC<AddAddressModalProps> = ({
             </form>
           </div>
 
-          {/* ПРАВАЯ КОЛОНКА (КАРТА ЯНДЕКС) */}
+
           <div className="map-column" style={{ background: '#EADBC8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            {/* Сюда можно вставить твой компонент карты <YandexMap /> */}
             <span style={{ color: '#8C7A6B', fontSize: '18px' }}>Карта загружается...</span>
           </div>
         </div>

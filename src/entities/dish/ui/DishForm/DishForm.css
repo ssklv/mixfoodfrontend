@@ -1,18 +1,17 @@
-/* ВЕСЬ ФОН МОДАЛКИ (Делаем ее большой) */
 .dish-modal-wrapper {
   display: flex;
-  width: 1000px;  /* Увеличили ширину */
+  width: 1000px;  
   max-width: 95vw;
-  height: 650px;  /* Увеличили высоту */
+  height: 650px; 
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* ЛЕВАЯ ЧАСТЬ (Желтый фон) */
+
 .dish-image-section {
   width: 50%;
-  background-color: #FDE690; /* Тот самый насыщенно-желтый */
+  background-color: #FDE690;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,10 +41,9 @@
   font-size: 18px;
 }
 
-/* ПРАВАЯ ЧАСТЬ (Светло-кремовый фон) */
 .dish-form-section {
   width: 50%;
-  background-color: #FDF5E1; /* Светло-кремовый фон формы */
+  background-color: #FDF5E1; 
   padding: 40px 40px 40px 30px;
   display: flex;
   flex-direction: column;
@@ -53,7 +51,6 @@
   position: relative;
 }
 
-/* СТИЛИ ВСЕХ ПОЛЕЙ */
 .dish-input {
   background: transparent;
   border: 1px solid #BDB3A6;
@@ -88,7 +85,6 @@
   margin-top: 15px;
 }
 
-/* ЧЕРНЫЙ КРЕСТИК ЗАКРЫТИЯ (Точь-в-точь как на макете) */
 .dish-close-btn {
   background: #1A1A1A;
   color: #fff;
@@ -102,17 +98,16 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-bottom: auto; /* Приподнимаем чуть вверх */
+  margin-bottom: auto; 
 }
 
-/* БОЛЬШОЕ ПОЛЕ ОПИСАНИЯ */
 .dish-textarea {
   margin-top: 15px;
   height: 180px;
   resize: none;
 }
 
-/* НАДПИСЬ "Пищевая ценность..." */
+
 .dish-nut-label {
   font-family: 'Courier New', Courier, monospace;
   font-size: 15px;
@@ -120,7 +115,6 @@
   margin: 20px 0 10px 0;
 }
 
-/* КНОПКА СОХРАНИТЬ */
 .dish-save-btn {
   margin-top: auto;
   background-color: #CCA9A9;

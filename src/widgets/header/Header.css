@@ -77,7 +77,6 @@
   transform: translateY(-50%);
 }
 
-/* Квадратная уменьшенная кнопка закрытия */
 .clear-search {
   position: absolute;
   right: 14px;
@@ -110,7 +109,7 @@
   color: rgba(54, 43, 43, 0.8);
 }
 
-/* БЛОК КНОПОК */
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -129,7 +128,7 @@
   transition: 0.2s;
 }
 
-/* ДРОПДАУН ПОИСКА */
+
 .search-results-dropdown {
   position: absolute;
   top: calc(100% + 10px);
@@ -179,7 +178,7 @@
   font-size: 15px;
 }
 
-/* КНОПКА КОРЗИНЫ */
+
 .header-cart-capsule {
   display: flex;
   align-items: center;

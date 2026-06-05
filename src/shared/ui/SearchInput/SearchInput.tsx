@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from '../Button/Button'; // Импортируем твою кнопку
+import { Button } from '../Button/Button'; 
 import './SearchInput.css';
 
 export const SearchInput = () => {

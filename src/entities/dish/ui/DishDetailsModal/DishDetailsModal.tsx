@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { type Dish } from '../../model/dishStore';
-import { useCartStore } from '@/entities/cart/model/cartStore'; // Импорт стора корзины
+import { useCartStore } from '@/entities/cart/model/cartStore'; 
 import './DishDetailsModal.css';
 
 interface DishDetailsModalProps {
@@ -11,7 +11,7 @@ interface DishDetailsModalProps {
 const API_URL = 'http://localhost:8082'; 
 
 export const DishDetailsModal: React.FC<DishDetailsModalProps> = ({ dish, onClose }) => {
-  const { addToCart } = useCartStore(); // Получаем метод добавления
+  const { addToCart } = useCartStore(); 
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -84,7 +84,7 @@ export const DishDetailsModal: React.FC<DishDetailsModalProps> = ({ dish, onClos
           <button 
             className="modal-add-btn"
             onClick={() => {
-              addToCart(dish.id); // Вызываем логику
+              addToCart(dish.id);
               onClose();
             }}
           >

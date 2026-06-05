@@ -27,17 +27,23 @@ function App() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState<'main' | 'profile'>('main'); 
+
+
   const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
   
   const [selectedDish, setSelectedDish] = useState<any>(null);
   const [activeCategory, setActiveCategory] = useState('Пицца'); 
 
+
+
+
+
+  
   const { isAuth } = useUserStore();
 
   const isProfile = location.pathname === '/profile';
   const isCheckout = location.pathname === '/checkout';
 
-  // Подключаем вебсокет при авторизации
   useEffect(() => {
     if (isAuth) {
       connectOrderSocket();

@@ -17,7 +17,7 @@
   font-family: 'IBM Plex Mono', monospace;
   box-sizing: border-box;
   display: flex;
-  overflow: hidden; /* Обрезает карту по скруглениям окна */
+  overflow: hidden;
 }
 
 .close-x-btn {
@@ -27,7 +27,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 20; /* Чтобы кнопка всегда была поверх карты */
+  z-index: 20;
   padding: 10px;
 }
 
@@ -37,10 +37,10 @@
   height: 100%;
 }
 
-/* ЛЕВАЯ КОЛОНКА (ФОРМА) */
+
 .form-column {
   flex: 1;
-  padding: 40px; /* Отступы только для формы */
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -94,7 +94,7 @@
   font-size: 20px;
   color: #333;
   cursor: pointer;
-  margin-top: auto; /* Прижимает кнопку к низу формы */
+  margin-top: auto; 
   width: 100%;
   transition: background 0.2s;
 }
@@ -103,7 +103,6 @@
   background: #B39292;
 }
 
-/* ПРАВАЯ КОЛОНКА (КАРТА) */
 .map-column {
   flex: 1;
   height: 100%;

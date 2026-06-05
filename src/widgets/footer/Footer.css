@@ -1,4 +1,3 @@
-/* Подключение необходимых шрифтов из Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Pacifico&family=Playpen+Sans:wght@400&display=swap');
 
 .main-footer {
@@ -11,9 +10,6 @@
   margin-top: auto; 
 }
 
-/* --- Стили для Логотипа --- */
-
-/* ИСПРАВЛЕНО: Сделали минус больше (-28px), чтобы поднять весь блок еще выше */
 .logo-column {
   margin-top: -28px; 
 }
@@ -37,14 +33,13 @@
   margin-top:-2px; 
 }
 
-/* --- Структура колонок --- */
+
 .footer-column {
   display: flex;
   flex-direction: column;
   gap: 10px; 
 }
 
-/* Названия столбцов */
 .footer-heading {
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 600; 
@@ -54,7 +49,7 @@
   margin-bottom: 4px;
 }
 
-/* Ссылки/кнопки под названиями */
+
 .footer-links {
   list-style: none;
   display: flex;

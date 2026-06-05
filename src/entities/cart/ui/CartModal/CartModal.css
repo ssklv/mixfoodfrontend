@@ -21,7 +21,6 @@
   box-sizing: border-box;
 }
 
-/* Шапка корзины */
 .cart-header {
   display: flex;
   justify-content: space-between;
@@ -47,7 +46,6 @@
   padding: 0;
 }
 
-/* Список добавленных блюд */
 .cart-items-list {
   flex: 1;
   overflow-y: auto;
@@ -83,12 +81,11 @@
   margin: 0;
 }
 
-/* Округлая плашка управления количеством: + 1 - */
 .product-quantity-pill {
   display: inline-flex;
   align-items: center;
   background-color: #CC9D9D;
-  border-radius: 15px; /* Скругление 15px */
+  border-radius: 15px;
   padding: 4px 12px;
   width: max-content;
   gap: 10px;
@@ -105,7 +102,6 @@
   transition: opacity 0.15s ease;
 }
 
-/* Эффект наведения на кнопочки + и - внутри плашки */
 .product-quantity-pill button:hover {
   opacity: 0.5;
 }
@@ -118,7 +114,6 @@
   text-align: center;
 }
 
-/* Правая колонка с ценой и крестиком удаления */
 .product-right-info {
   display: flex;
   flex-direction: column;
@@ -149,7 +144,7 @@
   font-weight: 500;
 }
 
-/* Нижний блок подвала корзины */
+
 .cart-footer {
   border-top: 2px solid #362B2B;
   padding-top: 20px;
@@ -175,12 +170,11 @@
   font-weight: 600;
 }
 
-/* Капсульная кнопка оформления заказа */
 .capsule-checkout-btn {
   background-color: #CC9D9D;
   color: #362B2B;
   border: none;
-  border-radius: 15px; /* Скругление 15px по Фигме */
+  border-radius: 15px; 
   padding: 12px 28px;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 16px;
@@ -188,33 +182,31 @@
   cursor: pointer;
   transition: all 0.2s ease;
 
-  /* Растягивание текста на кнопке */
   letter-spacing: 5px;       
   text-indent: 5px;          
   text-align: center;
 }
 
 .capsule-checkout-btn:hover {
-  background-color: #BC8D8D; /* Плавное потемнение при наведении */
+  background-color: #BC8D8D;
 }
 
 .capsule-checkout-btn:active {
-  transform: scale(0.97); /* Эффект продавливания при нажатии */
+  transform: scale(0.97); 
 }
 
-/* Стили для БЛОКИРОВАННОЙ кнопки оформления заказа */
+
 .capsule-checkout-btn.btn-disabled {
-  background-color: #CBB5AC !important; /* Блеклый цвет */
+  background-color: #CBB5AC !important; 
   color: rgba(54, 43, 43, 0.4) !important;
-  cursor: pointer; /* Оставляем обычный курсор, чтобы клик регистрировался кодом для анимации тоста */
+  cursor: pointer; 
 }
 
 .capsule-checkout-btn.btn-disabled:hover {
-  background-color: #CBB5AC !important; /* Выключаем hover эффекты */
+  background-color: #CBB5AC !important;
   transform: none !important;
 }
 
-/* Стили для пустого состояния */
 .empty-cart-container {
   display: flex;
   flex-direction: column;
@@ -236,32 +228,29 @@
   margin: 0;
 }
 
-/* ==========================================================================
-   ВСПЛЫВАЮЩЕЕ УВЕДОМЛЕНИЕ (TOAST) НАД КОРЗИНОЙ
-   ========================================================================== */
 .cart-auth-toast {
   position: fixed;
-  top: -120px; /* Изначально спрятан выше экрана */
+  top: -120px; 
   left: 50%;
   transform: translateX(-50%);
-  background-color: #CC9D9D; /* Фирменный темный контрастный цвет */
-  color: #362B2B;            /* Светлый кремовый текст */
+  background-color: #CC9D9D; 
+  color: #362B2B;            
   padding: 16px 24px;
-  border-radius: 15px;       /* Скругление 15px */
+  border-radius: 15px;     
   display: flex;
   align-items: center;
   gap: 16px;
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
-  z-index: 100000 !important; /* Выше подложки оверлея */
+  z-index: 100000 !important; 
   width: max-content;
   max-width: 420px;
   font-family: 'IBM Plex Mono', monospace;
-  transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Пружинный выезд */
+  transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Класс активации всплывающего уведомления */
+
 .cart-auth-toast.show {
-  top: 30px; /* Плавный выезд на 30px сверху */
+  top: 30px; 
 }
 
 .toast-icon {

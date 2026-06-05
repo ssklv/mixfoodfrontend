@@ -1,6 +1,6 @@
 import React from 'react';
 import { type Dish } from '../../model/dishStore';
-import { useCartStore } from '@/entities/cart/model/cartStore'; // Импорт стора корзины
+import { useCartStore } from '@/entities/cart/model/cartStore';
 import './DishCard.css';
 
 interface DishCardProps {
@@ -11,7 +11,7 @@ interface DishCardProps {
 const API_URL = 'http://localhost:8082';
 
 export const DishCard: React.FC<DishCardProps> = ({ dish, onOpenDetails }) => {
-  const { addToCart } = useCartStore(); // Получаем метод добавления
+  const { addToCart } = useCartStore(); 
 
   const getImageUrl = (url: string | undefined | null) => {
     if (!url) return '/placeholder.png';
@@ -43,7 +43,7 @@ export const DishCard: React.FC<DishCardProps> = ({ dish, onOpenDetails }) => {
             className="dish-showcase-add-btn" 
             onClick={(e) => {
               e.stopPropagation();
-              addToCart(dish.id); // Вызываем логику
+              addToCart(dish.id);
             }}
           >
             В корзину

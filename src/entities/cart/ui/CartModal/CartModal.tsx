@@ -9,7 +9,7 @@ const API_URL = 'http://localhost:8082';
 
 interface CartModalProps {
   onClose: () => void;
-  onOpenCheckout: () => void; // Оставляем, чтобы App.tsx не ломался
+  onOpenCheckout: () => void;
 }
 
 export const CartModal: React.FC<CartModalProps> = ({ onClose, onOpenCheckout }) => {
@@ -38,7 +38,6 @@ export const CartModal: React.FC<CartModalProps> = ({ onClose, onOpenCheckout })
       return;
     }
     
-    // Закрываем, вызываем колбэк и переходим
     onClose();
     onOpenCheckout(); 
     navigate('/checkout'); 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useUserStore } from '@/entities/user/model/userStore';
-// Импортируем тип напрямую из файла страницы профиля
 import type { ProfileTab } from '../../../pages/profile/ui/ProfilePage';
 import './ProfileSidebar.css';
 
@@ -10,15 +9,11 @@ interface ProfileSidebarProps {
 }
 
 export const ProfileSidebar: React.FC<ProfileSidebarProps> = ({ activeTab, onTabChange }) => {
-  // Получаем данные пользователя из Zustand
   const { userName, userPhone, logout } = useUserStore();
-
-  // Логика для аватара: берем первую букву имени или ставим иконку
   const avatarLetter = userName ? userName.charAt(0).toUpperCase() : '👤';
 
   const handleLogout = async () => {
     await logout();
-    // Перезагрузка нужна, чтобы сбросить состояние приложения после очистки хранилища
     window.location.reload();
   };
 
